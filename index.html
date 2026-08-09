@@ -3,32 +3,379 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Effective Altruism</title>
-  <meta name="description" content="Effective altruism is about using evidence and reason to figure out how to benefit others as much as possible, and taking action on that basis.">
+  <title>Effective Altruism Amsterdam</title>
+  <meta name="description" content="Effective Altruism Amsterdam is a community of students and professionals using evidence and reason to do as much good as possible. Everyone is welcome.">
+  <meta property="og:title" content="Effective Altruism Amsterdam">
+  <meta property="og:description" content="A community of students and professionals in Amsterdam working out how to do the most good — and then doing it.">
+  <meta property="og:type" content="website">
+  <!-- <meta property="og:image" content="img/og-image.jpg"> -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="index.html">Effective Altruism</a>
-    <nav class="site-nav">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="about.html">About</a>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">EAA</span>
+      <span class="brand-text">Effective Altruism Amsterdam</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul class="nav-list">
+        <li class="has-dropdown">
+          <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">About EAA</button>
+          <ul class="dropdown">
+            <li><a href="about-eaa.html">Overview</a></li>
+            <li><a href="team.html">The Team</a></li>
+            <li><a href="effective-altruism.html">Effective Altruism</a></li>
+            <li><a href="mission.html">Mission Statement</a></li>
+            <li><a href="collaborations.html">Collaborations</a></li>
+            <li><a href="community-health.html">Community Health</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link" href="events.html">Events</a></li>
+        <li><a class="nav-link" href="programs.html">Programs</a></li>
+        <li><a class="nav-link" href="contact.html">Contact</a></li>
+        <li><a class="nav-link nav-cta" href="donate.html">Donate</a></li>
+      </ul>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section class="hero">
-      <h1>Effective Altruism</h1>
+<main id="main">
+
+  <!-- ============ Hero ============ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Amsterdam</span>
+      <h1>Doing good better, together.</h1>
       <p class="lead">
-        Effective altruism is about using evidence and reason to figure out how to
-        benefit others as much as possible, and taking action on that basis.
+        Effective altruism is about using evidence and reason to work out how to
+        benefit others as much as possible — and then acting on it.
       </p>
-      <a class="button" href="about.html">Learn more</a>
-    </section>
-  </main>
+      <p>
+        We are the Amsterdam community built around that idea: people who want
+        their work, donations and time to count for as much as they can. We meet
+        to think hard about the world's most pressing problems, to disagree well,
+        and to help each other turn good intentions into real impact.
+      </p>
+      <div class="button-row">
+        <a class="button" href="events.html">Join our events</a>
+        <a class="button-secondary" href="programs.html">New to EA? Start here</a>
+      </div>
+      <p class="hero-note">
+        We have a <strong>student branch</strong> and a
+        <strong>non-student branch</strong> — whichever you are, you are welcome here.
+      </p>
+    </div>
+  </section>
 
-  <footer class="site-footer">
-    <p>Built as a simple introduction to effective altruism.</p>
-  </footer>
+  <!-- ============ Two branches ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Two branches, one community</span>
+        <h2>Everyone is welcome</h2>
+        <p>
+          EAA brings together a student group and a group of (young) professionals.
+          We run our own activities and plenty of things together — you are free to
+          join whatever fits you, and no background in effective altruism is needed.
+        </p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <span class="card-icon" aria-hidden="true">🎓</span>
+          <h3>Students</h3>
+          <p>
+            For students at the University of Amsterdam, the Vrije Universiteit and
+            any other school in and around the city. Weekly discussions, socials,
+            talks and workshops during the academic year.
+          </p>
+          <p><a class="arrow" href="events.html">See what's on</a></p>
+        </div>
+        <div class="card">
+          <span class="card-icon" aria-hidden="true">💼</span>
+          <h3>Professionals</h3>
+          <p>
+            For people already working — whether you are one year into a career or
+            twenty. Career conversations, dinners and deep dives with others who
+            take these questions seriously.
+          </p>
+          <p><a class="arrow" href="about-eaa.html">More about us</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Events / Luma embed ============ -->
+  <section class="section section-alt" id="events">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What's coming up</span>
+        <h2>Join our events</h2>
+        <p>
+          Discussions, socials, speaker talks and workshops. Most events are free,
+          open to newcomers, and in English. Subscribe to the calendar below to get
+          notified when we add something new.
+        </p>
+      </div>
+
+      <!-- ===================================================================
+           LUMA CALENDAR EMBED
+           Replace the whole .embed-placeholder block below with your iframe.
+
+           To get the code: open your calendar on lu.ma → Settings (or the "..."
+           menu) → Embed → "Embed Calendar" → copy the snippet. It looks like:
+
+           <iframe
+             src="https://lu.ma/embed/calendar/cal-XXXXXXXXXXXX/events"
+             width="100%" height="600" frameborder="0" style="border:0"
+             allowfullscreen="" aria-hidden="false" tabindex="0"
+             title="Effective Altruism Amsterdam events calendar"></iframe>
+
+           Keep it inside <div class="embed"> so it picks up the rounded border,
+           and keep the title attribute for screen readers.
+           =================================================================== -->
+      <div class="embed">
+        <div class="embed-placeholder">
+          <p>
+            <strong>The events calendar goes here.</strong><br>
+            Paste the Luma calendar embed code into <code>index.html</code> where
+            this placeholder sits — the instructions are in the comment right
+            above it in the file.
+          </p>
+        </div>
+      </div>
+
+      <div class="button-row">
+        <a class="button-secondary" href="events.html">All events and how we meet</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Intro program ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <span class="eyebrow">Start here</span>
+          <h2>New to EA? Join our intro program</h2>
+          <p>
+            Every semester we run the <strong>Introductory EA Program</strong>: a
+            six-week course through the core ideas of effective altruism. You read
+            a short set of articles each week and then talk them through in a small
+            group with a facilitator.
+          </p>
+          <p>
+            It is the best way in. You do not need any prior knowledge, you are not
+            expected to agree with any of it, and plenty of people join purely
+            because the questions are interesting.
+          </p>
+          <div class="button-row">
+            <a class="button" href="programs.html">About the program</a>
+            <a class="button-secondary" href="contact.html">Ask us a question</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>At a glance</h3>
+          <dl class="definition-list">
+            <dt>Length</dt>
+            <dd>6 weeks, one session per week</dd>
+            <dt>Time commitment</dt>
+            <dd>About 1 hour of reading, plus a 1.5-hour discussion</dd>
+            <dt>Group size</dt>
+            <dd>Small groups with a facilitator</dd>
+            <dt>Cost</dt>
+            <dd>Free</dd>
+            <dt>Who it's for</dt>
+            <dd>Students and professionals alike, no background needed</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Community / socials ============ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Stay in touch</span>
+        <h2>Join our community</h2>
+        <p>
+          The WhatsApp group is where events get announced and where most of the
+          day-to-day conversation happens. Say hello when you join.
+        </p>
+      </div>
+      <div class="grid-4">
+        <!-- TODO: replace href with your WhatsApp group invite link (chat.whatsapp.com/...) -->
+        <a class="card card-link" href="contact.html">
+          <span class="card-icon" aria-hidden="true">💬</span>
+          <h3>WhatsApp community</h3>
+          <p class="text-muted">
+            Event announcements, questions and plans. Ask us for an invite and we
+            will add you.
+          </p>
+        </a>
+        <!-- TODO: replace href with your LinkedIn page URL -->
+        <a class="card card-link" href="contact.html">
+          <span class="card-icon" aria-hidden="true">in</span>
+          <h3>LinkedIn</h3>
+          <p class="text-muted">
+            Talks, opportunities and what the community is working on.
+          </p>
+        </a>
+        <a class="card card-link" href="https://www.instagram.com/eaamsterdam/" rel="me noopener" target="_blank">
+          <span class="card-icon" aria-hidden="true">📷</span>
+          <h3>Instagram</h3>
+          <p class="text-muted">
+            @eaamsterdam — photos from events and what is coming up next.
+          </p>
+        </a>
+        <a class="card card-link" href="mailto:info@eaamsterdam.com">
+          <span class="card-icon" aria-hidden="true">✉️</span>
+          <h3>Email us</h3>
+          <p class="text-muted">
+            info@eaamsterdam.com — good for anything that needs a real answer.
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Impact ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Our impact</span>
+        <h2>What this community has helped make happen</h2>
+        <p>
+          A community is only worth running if something comes of it. Here is what
+          has come of ours.
+        </p>
+      </div>
+
+      <!-- ===================================================================
+           TODO — fill in real numbers and real examples.
+           These are deliberately left blank rather than guessed at. Replace each
+           "—" with a figure you can stand behind, and rewrite the labels to match
+           what you actually track. Delete any card you do not have data for.
+           =================================================================== -->
+      <div class="grid-4">
+        <div class="card stat">
+          <span class="stat-number">—</span>
+          <span class="stat-label">People through the Intro Program</span>
+          <span class="stat-note">Since the first cohort</span>
+        </div>
+        <div class="card stat">
+          <span class="stat-number">—</span>
+          <span class="stat-label">Events hosted</span>
+          <span class="stat-note">Discussions, talks, workshops and socials</span>
+        </div>
+        <div class="card stat">
+          <span class="stat-number">—</span>
+          <span class="stat-label">Career plans changed</span>
+          <span class="stat-note">People who moved into higher-impact work</span>
+        </div>
+        <div class="card stat">
+          <span class="stat-number">—</span>
+          <span class="stat-label">Community members</span>
+          <span class="stat-note">Across the student and professional branches</span>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top: 1.5rem;">
+        <div class="card">
+          <h3>Stories from the community</h3>
+          <p class="text-muted">
+            <!-- TODO: replace with 2–3 short, concrete examples. Good ones name a
+                 specific outcome: someone who switched field, a project that got
+                 funded, a collaboration that started here. Ask permission before
+                 naming anyone. -->
+            Add two or three short stories here — someone who changed direction
+            after the Intro Program, a project that started as a hallway
+            conversation, a collaboration that came out of an event.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Where the money goes</h3>
+          <p class="text-muted">
+            <!-- TODO: replace with how donations to EAA are used, and any figures
+                 you are comfortable publishing. -->
+            Describe what donations to EAA pay for and what that buys. See the
+            <a href="donate.html">donate page</a> for the full picture.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Closing CTA ============ -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>Come to one thing and see</h2>
+      <p>
+        You do not have to call yourself an effective altruist, or agree with any
+        of it. Turning up once is enough.
+      </p>
+      <div class="button-row">
+        <a class="button" href="events.html">Find an event</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <h2>Effective Altruism Amsterdam</h2>
+        <p>
+          A community of students and professionals in Amsterdam working out how to
+          do the most good — and then doing it.
+        </p>
+      </div>
+      <div>
+        <h2>About EAA</h2>
+        <ul>
+          <li><a href="about-eaa.html">Overview</a></li>
+          <li><a href="team.html">The Team</a></li>
+          <li><a href="effective-altruism.html">Effective Altruism</a></li>
+          <li><a href="mission.html">Mission Statement</a></li>
+          <li><a href="collaborations.html">Collaborations</a></li>
+          <li><a href="community-health.html">Community Health</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Get involved</h2>
+        <ul>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="donate.html">Donate</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Follow us</h2>
+        <ul>
+          <li><a href="https://www.instagram.com/eaamsterdam/" rel="me noopener" target="_blank">Instagram</a></li>
+          <!-- TODO: replace with your LinkedIn page URL -->
+          <li><a href="contact.html">LinkedIn</a></li>
+          <!-- TODO: replace with your WhatsApp group invite link -->
+          <li><a href="contact.html">WhatsApp</a></li>
+          <li><a href="mailto:info@eaamsterdam.com">info@eaamsterdam.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Effective Altruism Amsterdam</p>
+      <p>Part of the effective altruism community in the Netherlands.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
 </body>
 </html>
