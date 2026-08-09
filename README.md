@@ -38,7 +38,30 @@ GitHub Pages serves the `main` branch from `/ (root)`, with the custom domain in
 ## Design
 
 **Light mode only.** There is no dark theme; the site looks the same for
-everyone, which makes it far easier to check a change looks right.
+everyone, which makes it far easier to check a change looks right. Two things
+enforce that: there are no `prefers-color-scheme` rules in `styles.css`, and
+`color-scheme: only light` asks browsers not to apply their own automatic
+dark-mode transform (Chrome on Android can otherwise recolour a light page).
+
+### If a change does not show up on the live site
+
+Browsers cache CSS and JS hard. Because the filenames never change, a visitor
+who has been to the site before can keep using the old stylesheet even after a
+deploy — which looks like your change simply did not happen, while HTML changes
+show up immediately.
+
+So the pages link to `styles.css?v=2` and `nav.js?v=2`. **When you change either
+file, bump that number in all eleven pages:**
+
+```sh
+sed -i '' 's/styles\.css?v=2/styles.css?v=3/g; s/nav\.js?v=2/nav.js?v=3/g' *.html   # macOS
+sed -i    's/styles\.css?v=2/styles.css?v=3/g; s/nav\.js?v=2/nav.js?v=3/g' *.html   # Linux
+```
+
+The new URL is one the browser has never seen, so it always fetches fresh. To
+check what is actually live regardless of your own cache, open the site in a
+private window, or hard-reload with <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> +
+<kbd>Shift</kbd> + <kbd>R</kbd>.
 
 Colours come from the logo and live as custom properties at the top of
 `styles.css`. Change them there rather than in individual rules:

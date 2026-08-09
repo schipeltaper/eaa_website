@@ -10,6 +10,11 @@
 
 /* ---------- Design tokens ---------- */
 :root {
+  /* This site is light-only. "only light" also asks browsers not to apply their
+     own automatic dark-mode transform (Chrome's force-dark on Android, and
+     similar), which would otherwise recolour the page behind our backs. */
+  color-scheme: only light;
+
   /* Brand */
   --sky: #6fc5e8;          /* wordmark blue */
   --sky-light: #a8dcf1;
