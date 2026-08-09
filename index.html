@@ -8,8 +8,9 @@
   <meta property="og:title" content="Effective Altruism Amsterdam">
   <meta property="og:description" content="A community of students and professionals in Amsterdam working out how to do the most good — and then doing it.">
   <meta property="og:type" content="website">
-  <!-- <meta property="og:image" content="img/og-image.jpg"> -->
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:image" content="img/og-image.png">
+  <link rel="icon" href="img/favicon-96.png" sizes="96x96">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,7 +19,8 @@
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="index.html">
-      <span class="brand-mark">EAA</span>
+      <img class="brand-mark" src="img/lamp_logo.webp" alt=""
+           width="1200" height="1200">
       <span class="brand-text">Effective Altruism Amsterdam</span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -122,31 +124,15 @@
         </p>
       </div>
 
-      <!-- ===================================================================
-           LUMA CALENDAR EMBED
-           Replace the whole .embed-placeholder block below with your iframe.
-
-           To get the code: open your calendar on lu.ma → Settings (or the "..."
-           menu) → Embed → "Embed Calendar" → copy the snippet. It looks like:
-
-           <iframe
-             src="https://lu.ma/embed/calendar/cal-XXXXXXXXXXXX/events"
-             width="100%" height="600" frameborder="0" style="border:0"
-             allowfullscreen="" aria-hidden="false" tabindex="0"
-             title="Effective Altruism Amsterdam events calendar"></iframe>
-
-           Keep it inside <div class="embed"> so it picks up the rounded border,
-           and keep the title attribute for screen readers.
-           =================================================================== -->
       <div class="embed">
-        <div class="embed-placeholder">
-          <p>
-            <strong>The events calendar goes here.</strong><br>
-            Paste the Luma calendar embed code into <code>index.html</code> where
-            this placeholder sits — the instructions are in the comment right
-            above it in the file.
-          </p>
-        </div>
+        <iframe
+          src="https://luma.com/embed/calendar/cal-Fqocig0MZljxyNl/events"
+          title="Effective Altruism Amsterdam events calendar"
+          frameborder="0"
+          allowfullscreen=""
+          aria-hidden="false"
+          tabindex="0"
+        ></iframe>
       </div>
 
       <div class="button-row">
@@ -209,17 +195,14 @@
         </p>
       </div>
       <div class="grid-4">
-        <!-- TODO: replace href with your WhatsApp group invite link (chat.whatsapp.com/...) -->
-        <a class="card card-link" href="contact.html">
+        <a class="card card-link" href="contact.html#whatsapp">
           <span class="card-icon" aria-hidden="true">💬</span>
           <h3>WhatsApp community</h3>
           <p class="text-muted">
-            Event announcements, questions and plans. Ask us for an invite and we
-            will add you.
+            Event announcements, questions and plans. Come and say hello.
           </p>
         </a>
-        <!-- TODO: replace href with your LinkedIn page URL -->
-        <a class="card card-link" href="contact.html">
+        <a class="card card-link" href="https://www.linkedin.com/company/effective-altruism-amsterdam" rel="me noopener" target="_blank">
           <span class="card-icon" aria-hidden="true">in</span>
           <h3>LinkedIn</h3>
           <p class="text-muted">
@@ -331,7 +314,8 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-about">
-        <h2>Effective Altruism Amsterdam</h2>
+        <img class="footer-logo" src="img/logo.webp"
+             alt="Effective Altruism Amsterdam" width="2500" height="1250">
         <p>
           A community of students and professionals in Amsterdam working out how to
           do the most good — and then doing it.
@@ -361,10 +345,8 @@
         <h2>Follow us</h2>
         <ul>
           <li><a href="https://www.instagram.com/eaamsterdam/" rel="me noopener" target="_blank">Instagram</a></li>
-          <!-- TODO: replace with your LinkedIn page URL -->
-          <li><a href="contact.html">LinkedIn</a></li>
-          <!-- TODO: replace with your WhatsApp group invite link -->
-          <li><a href="contact.html">WhatsApp</a></li>
+          <li><a href="https://www.linkedin.com/company/effective-altruism-amsterdam" rel="me noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="contact.html#whatsapp">WhatsApp</a></li>
           <li><a href="mailto:info@eaamsterdam.com">info@eaamsterdam.com</a></li>
         </ul>
       </div>
