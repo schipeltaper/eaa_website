@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact &middot; Effective Altruism Amsterdam</title>
   <meta name="description" content="Get in touch with Effective Altruism Amsterdam — join the WhatsApp community, follow us, or email the organising team.">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="img/favicon-96.png" sizes="96x96">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,7 +15,8 @@
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="index.html">
-      <span class="brand-mark">EAA</span>
+      <img class="brand-mark" src="img/lamp_logo.webp" alt=""
+           width="1200" height="1200">
       <span class="brand-text">Effective Altruism Amsterdam</span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -63,31 +65,23 @@
             for asking to be added to the WhatsApp group.
           </p>
         </div>
-        <!-- TODO: replace href with your WhatsApp group invite link
-             (chat.whatsapp.com/...). If the group is invite-on-request, leave this
-             pointing at the email above and delete the link. -->
-        <div class="card">
+        <a class="card card-link" href="#whatsapp">
           <span class="card-icon" aria-hidden="true">💬</span>
           <h3>WhatsApp community</h3>
           <p class="text-muted">
             Where events get announced and most of the day-to-day chat happens.
-            Email us and we will send you the invite.
           </p>
-        </div>
+        </a>
         <a class="card card-link" href="https://www.instagram.com/eaamsterdam/" rel="me noopener" target="_blank">
           <span class="card-icon" aria-hidden="true">📷</span>
           <h3>Instagram</h3>
           <p class="text-muted">@eaamsterdam — photos, and what is coming up.</p>
         </a>
-        <!-- TODO: replace href with your LinkedIn page URL. -->
-        <div class="card">
+        <a class="card card-link" href="https://www.linkedin.com/company/effective-altruism-amsterdam" rel="me noopener" target="_blank">
           <span class="card-icon" aria-hidden="true">in</span>
           <h3>LinkedIn</h3>
-          <p class="text-muted">
-            Talks, opportunities and what the community is working on. Add the page
-            link here.
-          </p>
-        </div>
+          <p class="text-muted">Talks, opportunities and what the community is working on.</p>
+        </a>
       </div>
     </div>
   </section>
@@ -118,6 +112,68 @@
     </div>
   </section>
 
+
+  <section class="section section-alt" id="whatsapp">
+    <div class="container">
+      <div class="prose">
+        <span class="eyebrow">Join us</span>
+        <h2>The WhatsApp community</h2>
+        <p>
+          This is where events get announced, where people ask questions between
+          events, and where plans get made. It is the single best way to stay in
+          the loop, and you are welcome in it whether or not you have been to
+          anything yet.
+        </p>
+        <p>
+          It is a friendly group, not a busy one — expect a handful of messages a
+          week, mostly about what is coming up. Introduce yourself when you arrive
+          if you like; plenty of people just read for a while first, and that is
+          fine too.
+        </p>
+
+        <!-- ===================================================================
+             WHATSAPP INVITE — one thing to fill in.
+
+             No complete group URL appears anywhere in this page's source, on
+             purpose. Bots crawl public pages for WhatsApp invite URLs and dump
+             them into spam lists, which is the usual way junk accounts find a
+             group. Only the invite code lives here; nav.js adds the rest when a
+             real person clicks the button.
+
+             To set it up: in WhatsApp open the group or community → Invite via
+             link → Copy link. The link ends in a slash followed by a string of
+             letters and numbers. Paste ONLY that trailing string into data-code
+             below — no slashes, no https, nothing else.
+
+             This stops casual scraping. It is not real access control: see
+             README.md for the setting that actually keeps bots out (requiring
+             admin approval for new members).
+             =================================================================== -->
+        <p>
+          <button class="button" type="button" id="whatsapp-reveal" data-code="">
+            Show the invite link
+          </button>
+        </p>
+        <p class="reveal-target" id="whatsapp-link" hidden></p>
+        <p class="reveal-note">
+          New members are approved by an organiser, so it may be a few hours before
+          you are let in. If the button does not work, or you would rather not use
+          WhatsApp at all, email
+          <a href="mailto:info@eaamsterdam.com">info@eaamsterdam.com</a> and we will
+          sort it out.
+        </p>
+
+        <div class="callout">
+          <p>
+            <strong>Our one rule for the group:</strong> it is for the community,
+            not for advertising. Events, questions, articles and plans are all
+            welcome. Anything that reads like a sales pitch is not.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
       <div class="prose">
@@ -141,7 +197,8 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-about">
-        <h2>Effective Altruism Amsterdam</h2>
+        <img class="footer-logo" src="img/logo.webp"
+             alt="Effective Altruism Amsterdam" width="2500" height="1250">
         <p>
           A community of students and professionals in Amsterdam working out how to
           do the most good — and then doing it.
@@ -171,10 +228,8 @@
         <h2>Follow us</h2>
         <ul>
           <li><a href="https://www.instagram.com/eaamsterdam/" rel="me noopener" target="_blank">Instagram</a></li>
-          <!-- TODO: replace with your LinkedIn page URL -->
-          <li><a href="contact.html">LinkedIn</a></li>
-          <!-- TODO: replace with your WhatsApp group invite link -->
-          <li><a href="contact.html">WhatsApp</a></li>
+          <li><a href="https://www.linkedin.com/company/effective-altruism-amsterdam" rel="me noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="contact.html#whatsapp">WhatsApp</a></li>
           <li><a href="mailto:info@eaamsterdam.com">info@eaamsterdam.com</a></li>
         </ul>
       </div>
