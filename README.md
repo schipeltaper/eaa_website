@@ -16,6 +16,14 @@ python3 -m http.server 8000
 GitHub Pages serves the `main` branch from `/ (root)`, with the custom domain in
 `CNAME`. Anything merged to `main` goes live within a minute or two.
 
+## Contact address
+
+`info@eaamsterdam.com` — confirmed correct, and what every page uses.
+
+Note that the 2025 fellowship curriculum PDF says `info@eaamsterdam.org` in three
+places and links to `www.eaamsterdam.org/events`. That is the document that needs
+correcting, not the site — worth fixing before the next cohort receives it.
+
 ## The files
 
 | File | What it is |
@@ -113,6 +121,28 @@ published/public first, or subscribing will not work for visitors.
 A Google Calendar embed would be an alternative, but it would mean maintaining
 events in two places. Keeping Luma as the single source is simpler.
 
+### Events hosted somewhere else (Meetup, Eventbrite…)
+
+When someone runs one of our events on their own platform, you do not have to
+choose between listing it twice and leaving it off. Luma has a mode for exactly
+this: on the calendar's submit-event panel choose **Add Event from External
+Platform**, paste the event page URL, then fill in the name, location, host and
+time — checking the time zone.
+
+The event then appears on our calendar like any other, and clicking it takes
+people straight to the Meetup page rather than a Luma registration form.
+
+Two things to know:
+
+- **No cover image.** Luma does not store one for external events, and neither
+  the host nor a calendar admin can add one afterwards, so those entries look
+  plainer than the rest.
+- **No Luma features.** Managed guest lists, check-in, payments and email blasts
+  do not apply — registration lives entirely on the other platform.
+
+Neither matters for a Meetup-run social, and it beats maintaining the same event
+in two places.
+
 ### Program sessions on the calendar
 
 The same calendar is embedded on `programs.html`, so program sessions show up
@@ -143,8 +173,9 @@ sessions are hard to pick out.
 3. Paste it into `data-code=""` on the `#whatsapp-reveal` button in
    `contact.html`.
 
-Until it is filled in, the button politely tells people to email instead, so the
-page is never broken.
+The invite code is filled in. If it ever needs changing — a link reset, a new
+group — `data-code` is the only thing to edit. Left empty, the button politely
+tells people to email instead, so the page is never broken.
 
 ### Keeping bots out
 
@@ -180,11 +211,6 @@ while they are outstanding, but they are placeholder text a visitor would notice
 
 **Needed:**
 
-- **Confirm the email domain.** The site says `info@eaamsterdam.com` throughout.
-  The 2025 fellowship curriculum says `info@eaamsterdam.org` (three times) and
-  links to `www.eaamsterdam.org/events`. One of the two is wrong and it is worth
-  settling — a wrong address on a contact page means mail silently goes nowhere.
-  To switch the whole site: `sed -i 's/eaamsterdam\.com/eaamsterdam.org/g' *.html`
 
 - **Team roles, bios and photos** — `team.html` has everyone's name from the
   planning doc but placeholder roles and bios. Each group's list ended in "..." so
@@ -195,7 +221,6 @@ while they are outstanding, but they are placeholder text a visitor would notice
 - **Impact numbers** — `index.html`, deliberately left as `—` rather than guessed
   at: events organised, programs run, pledges, members
 - **Donation route** — `donate.html` has no payment link or bank details yet
-- **WhatsApp invite code** — `contact.html`, as above
 - **Luma calendar link** — `events.html`, for the subscribe button
 - **Meetup.com link** — `team.html`, for the young professionals group
 - **KPIs** — `mission.html`. The planning doc had the heading but nothing under
