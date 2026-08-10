@@ -38,6 +38,30 @@
   --radius-sm: 0.5rem;
 }
 
+/* Forced-colours mode (Windows High Contrast, and Firefox's colour override in
+   about:preferences → Colors). The browser replaces our palette with the user's
+   own and drops background images — that is their choice and we should not fight
+   it, but these rules keep the layout legible when it happens: borders stay
+   visible, and the hero does not end up as pale text on a blank ground. */
+@media (forced-colors: active) {
+  .hero {
+    background-image: none;
+  }
+  .card,
+  .embed,
+  .site-header,
+  .page-header {
+    border: 1px solid CanvasText;
+  }
+  .button,
+  .button-secondary {
+    border: 1px solid ButtonText;
+  }
+  .brand-mark {
+    mix-blend-mode: normal;
+  }
+}
+
 /* ---------- Base ---------- */
 *,
 *::before,
