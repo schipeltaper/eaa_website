@@ -28,7 +28,7 @@ GitHub Pages serves the `main` branch from `/ (root)`, with the custom domain in
 | `collaborations.html` | Who we work with |
 | `community-health.html` | Code of conduct and how to raise a problem |
 | `events.html` | Events, with the Luma calendar |
-| `programs.html` | Introductory Program and what comes after |
+| `programs.html` | Introductory EA Fellowship and what comes after |
 | `contact.html` | How to reach us, and the WhatsApp invite |
 | `donate.html` | Giving to EAA, and giving well generally |
 | `styles.css` | All styling for every page |
@@ -123,7 +123,7 @@ and knows to ask about the next one.
 Two ways to run it:
 
 - **One calendar** (what it does now). Add each session as an event with a clear
-  title — `Intro Program · Week 3` makes the sequence obvious. For sessions
+  title — `Intro Fellowship · Week 3` makes the sequence obvious. For sessions
   closed to newcomers, turn registration off or set the event to invite-only on
   Luma, so people see it without being able to sign up by mistake.
 - **A separate programs calendar.** Make a second calendar on Luma and swap its
@@ -180,6 +180,12 @@ while they are outstanding, but they are placeholder text a visitor would notice
 
 **Needed:**
 
+- **Confirm the email domain.** The site says `info@eaamsterdam.com` throughout.
+  The 2025 fellowship curriculum says `info@eaamsterdam.org` (three times) and
+  links to `www.eaamsterdam.org/events`. One of the two is wrong and it is worth
+  settling — a wrong address on a contact page means mail silently goes nowhere.
+  To switch the whole site: `sed -i 's/eaamsterdam\.com/eaamsterdam.org/g' *.html`
+
 - **Team roles, bios and photos** — `team.html` has everyone's name from the
   planning doc but placeholder roles and bios. Each group's list ended in "..." so
   people are probably missing. Naomi is commented out because the doc had a
@@ -207,6 +213,15 @@ while they are outstanding, but they are placeholder text a visitor would notice
   reports, so a named person or dedicated address is better (`community-health.html`)
 - Whether the descriptions of AISIA and PBU on `collaborations.html` are how
   those organisations would describe themselves
+
+## Deliberately not on the site
+
+- **Organisers' personal phone numbers.** The fellowship curriculum lists mobile
+  numbers for pressing matters during a cohort. That is right for a document sent
+  to enrolled fellows and wrong for a public web page, where it would be scraped
+  within days. The site routes everything through the shared inbox instead.
+- **Naomi.** The planning doc had a question mark by the name, so the card in
+  `team.html` is commented out rather than published unconfirmed.
 
 ## Editing conventions
 
