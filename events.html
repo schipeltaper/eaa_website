@@ -8,7 +8,7 @@
   <link rel="icon" href="img/favicon-96.png" sizes="96x96">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <meta name="color-scheme" content="only light">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -76,38 +76,41 @@
       </div>
 
       <div class="grid-2" style="margin-top: 2rem;">
-        <div class="card">
+        <!-- ===================================================================
+             ADD-TO-CALENDAR — configured. nav.js builds the Google Calendar
+             link, the webcal link for Apple/Outlook, and the copy-link button
+             from the data-ics value below. It accepts https:// or webcal://.
+
+             The feed is Luma's iCal export for our calendar. It is an
+             undocumented endpoint, so if these buttons ever stop working that is
+             the first thing to check: open the URL in a browser and see whether
+             it still returns a .ics file.
+
+             Note: the feed names itself "Personal", so that is what subscribers
+             see the calendar called in their app until they rename it. If Luma's
+             own Subscribe control ever offers a URL with a better name, prefer
+             that one.
+             =================================================================== -->
+        <div class="card" id="subscribe"
+             data-ics="https://api.lu.ma/ics/get?entity=calendar&amp;id=cal-Fqocig0MZljxyNl">
           <span class="card-icon" aria-hidden="true">📅</span>
           <h3>Add our calendar to yours</h3>
           <p class="text-muted">
-            Rather than checking back here, you can subscribe once and have every
-            new EAA event appear in your own calendar automatically — Google
-            Calendar, Apple Calendar, Outlook, whatever you use.
+            Subscribe once and every new EAA event turns up in your own calendar
+            automatically — including changes to a time or a room. Nothing to check
+            back for.
           </p>
-          <p class="text-muted">
-            Open the calendar on Luma and use its <strong>Subscribe</strong> button,
-            then pick your calendar app. Nothing else to do — new events show up on
-            their own, and changes to a time or room update in your calendar too.
-          </p>
-          <!-- ===================================================================
-               TODO — add the public calendar link, then delete the hidden
-               attribute on the button row below.
-
-               Luma only shows its Subscribe control on the calendar's own page,
-               and an empty calendar has little to show, so the embed above is not
-               a reliable route to it. A direct link is.
-
-               Get it by opening your calendar on luma.com while signed in and
-               copying the address bar — it looks like luma.com/<name>. If the
-               calendar is not public yet, publish it first, or subscribing will
-               not work for visitors.
-               =================================================================== -->
-          <div class="button-row" hidden>
-            <a class="button" href="" rel="noopener" target="_blank">Open the calendar on Luma</a>
+          <div class="button-row" data-subscribe-buttons hidden>
+            <a class="button" data-subscribe="google" href="" target="_blank" rel="noopener">Google Calendar</a>
+            <a class="button-secondary" data-subscribe="webcal" href="">Apple or Outlook</a>
+            <button class="button-secondary" type="button" data-subscribe="copy">Copy link</button>
           </div>
-          <p class="reveal-note">
-            Not working yet? <a href="contact.html#whatsapp">Join the WhatsApp
-            group</a> — every event gets announced there too.
+          <p class="reveal-note" data-subscribe-status role="status"></p>
+          <p class="reveal-note" data-subscribe-fallback>
+            One-click subscribing is not switched on yet. In the meantime, open any
+            event on the calendar above and use its <strong>Add to Calendar</strong>
+            button, or <a href="contact.html#whatsapp">join the WhatsApp group</a>,
+            where every event gets announced.
           </p>
         </div>
         <div class="card">
@@ -141,6 +144,16 @@
             Our bread and butter: bi-weekly socials on Tuesday evenings. No reading,
             no preparation, and newcomers are always welcome — this is the easiest
             thing to turn up to first. Time and location are on the calendar above.
+          </p>
+        </div>
+        <div class="card">
+          <p class="card-meta">Second Tuesday of the month</p>
+          <h3>EA drinks</h3>
+          <p class="text-muted">
+            Informal drinks, aimed at professionals but open to everyone. Organised
+            through
+            <a href="https://www.meetup.com/effectiefaltruisme/" rel="noopener" target="_blank">Meetup</a>
+            and listed on the calendar above.
           </p>
         </div>
         <div class="card">
@@ -297,6 +310,6 @@
   </div>
 </footer>
 
-<script src="nav.js?v=4"></script>
+<script src="nav.js?v=6"></script>
 </body>
 </html>

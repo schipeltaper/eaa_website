@@ -16,6 +16,14 @@ python3 -m http.server 8000
 GitHub Pages serves the `main` branch from `/ (root)`, with the custom domain in
 `CNAME`. Anything merged to `main` goes live within a minute or two.
 
+## Contact address
+
+`info@eaamsterdam.com` — confirmed correct, and what every page uses.
+
+Note that the 2025 fellowship curriculum PDF says `info@eaamsterdam.org` in three
+places and links to `www.eaamsterdam.org/events`. That is the document that needs
+correcting, not the site — worth fixing before the next cohort receives it.
+
 ## The files
 
 | File | What it is |
@@ -32,7 +40,7 @@ GitHub Pages serves the `main` branch from `/ (root)`, with the custom domain in
 | `contact.html` | How to reach us, and the WhatsApp invite |
 | `donate.html` | Giving to EAA, and giving well generally |
 | `styles.css` | All styling for every page |
-| `nav.js` | Mobile menu, dropdown, WhatsApp reveal |
+| `nav.js` | Mobile menu, dropdown, calendar subscribe, WhatsApp reveal |
 | `img/` | Images — see `img/README.md` |
 
 ## Design
@@ -50,16 +58,16 @@ who has been to the site before can keep using the old stylesheet even after a
 deploy — which looks like your change simply did not happen, while HTML changes
 show up immediately.
 
-So the pages link to `styles.css?v=4` and `nav.js?v=4`. **When you change either
-file, bump that number in all eleven pages** — here 4 becomes 5:
+So the pages link to `styles.css?v=6` and `nav.js?v=6`. **When you change either
+file, bump that number in all eleven pages** — here 6 becomes 7:
 
 ```sh
-sed -i '' 's/?v=4/?v=5/g' *.html   # macOS
-sed -i    's/?v=4/?v=5/g' *.html   # Linux
+sed -i '' 's/?v=6/?v=7/g' *.html   # macOS
+sed -i    's/?v=6/?v=7/g' *.html   # Linux
 ```
 
-(Then next time, 5 becomes 6, and so on. It only matters that the number is one
-the browser has not seen before.)
+(And so on next time. All that matters is using a number the browser has not
+seen before.)
 
 The new URL is one the browser has never seen, so it always fetches fresh. To
 check what is actually live regardless of your own cache, open the site in a
@@ -100,18 +108,56 @@ in a new snippet, drop its `width` and `height` attributes too.
 
 ### Letting people subscribe
 
-Luma shows its **Subscribe** control on the calendar's own page rather than
-reliably inside an embed — and an empty calendar has little to show — so the
-events page points people at the calendar on Luma instead of at the widget.
+The events page has an **Add our calendar to yours** card with Google Calendar,
+Apple/Outlook and Copy-link buttons. All three are built by `nav.js` from one
+attribute on `#subscribe` in `events.html`:
 
-There is a hidden "Open the calendar on Luma" button in `events.html` waiting for
-that link. To switch it on: open your calendar on luma.com while signed in, copy
-the address (it looks like `luma.com/<name>`), put it in the `href`, and delete
-the `hidden` attribute on the surrounding `div`. Make sure the calendar is
-published/public first, or subscribing will not work for visitors.
+```html
+data-ics="https://api.lu.ma/ics/get?entity=calendar&id=cal-Fqocig0MZljxyNl"
+```
+
+That is Luma's iCal export for our calendar, confirmed to return the real event
+list. It takes the URL in either `https://` or `webcal://` form and derives the
+other — Google gets the https version through its add-by-URL flow, Apple and
+Outlook get `webcal://`, which both open natively.
+
+Two things to know:
+
+- **The endpoint is undocumented.** Luma could change it without notice. If the
+  buttons ever stop working, open that URL in a browser first: if it no longer
+  returns a `.ics`, get the current one from Luma's Subscribe / iCal control
+  (`help.luma.com/p/ical-syncing`) and replace `data-ics`. Nothing else changes.
+- **The feed calls itself "Personal".** Calendar apps use that name, so people
+  end up with a calendar called "Personal" until they rename it. If Luma's own
+  Subscribe control offers a URL with a better name, prefer it.
+
+Emptying `data-ics` hides the buttons and shows a short explanation instead, so
+the card is never broken while you are mid-change.
 
 A Google Calendar embed would be an alternative, but it would mean maintaining
 events in two places. Keeping Luma as the single source is simpler.
+
+### Events hosted somewhere else (Meetup, Eventbrite…)
+
+When someone runs one of our events on their own platform, you do not have to
+choose between listing it twice and leaving it off. Luma has a mode for exactly
+this: on the calendar's submit-event panel choose **Add Event from External
+Platform**, paste the event page URL, then fill in the name, location, host and
+time — checking the time zone.
+
+The event then appears on our calendar like any other, and clicking it takes
+people straight to the Meetup page rather than a Luma registration form.
+
+Two things to know:
+
+- **No cover image.** Luma does not store one for external events, and neither
+  the host nor a calendar admin can add one afterwards, so those entries look
+  plainer than the rest.
+- **No Luma features.** Managed guest lists, check-in, payments and email blasts
+  do not apply — registration lives entirely on the other platform.
+
+Neither matters for a Meetup-run social, and it beats maintaining the same event
+in two places.
 
 ### Program sessions on the calendar
 
@@ -143,8 +189,9 @@ sessions are hard to pick out.
 3. Paste it into `data-code=""` on the `#whatsapp-reveal` button in
    `contact.html`.
 
-Until it is filled in, the button politely tells people to email instead, so the
-page is never broken.
+The invite code is filled in. If it ever needs changing — a link reset, a new
+group — `data-code` is the only thing to edit. Left empty, the button politely
+tells people to email instead, so the page is never broken.
 
 ### Keeping bots out
 
@@ -180,11 +227,6 @@ while they are outstanding, but they are placeholder text a visitor would notice
 
 **Needed:**
 
-- **Confirm the email domain.** The site says `info@eaamsterdam.com` throughout.
-  The 2025 fellowship curriculum says `info@eaamsterdam.org` (three times) and
-  links to `www.eaamsterdam.org/events`. One of the two is wrong and it is worth
-  settling — a wrong address on a contact page means mail silently goes nowhere.
-  To switch the whole site: `sed -i 's/eaamsterdam\.com/eaamsterdam.org/g' *.html`
 
 - **Team roles, bios and photos** — `team.html` has everyone's name from the
   planning doc but placeholder roles and bios. Each group's list ended in "..." so
@@ -195,9 +237,6 @@ while they are outstanding, but they are placeholder text a visitor would notice
 - **Impact numbers** — `index.html`, deliberately left as `—` rather than guessed
   at: events organised, programs run, pledges, members
 - **Donation route** — `donate.html` has no payment link or bank details yet
-- **WhatsApp invite code** — `contact.html`, as above
-- **Luma calendar link** — `events.html`, for the subscribe button
-- **Meetup.com link** — `team.html`, for the young professionals group
 - **KPIs** — `mission.html`. The planning doc had the heading but nothing under
   it, so four are drafted from the theory of change. Replace with the real ones
 - **Organisation logos** — `collaborations.html`, for EAN, AISIA and PBU
