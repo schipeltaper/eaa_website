@@ -68,3 +68,28 @@ step, so do it with any image tool — the targets are:
 
 Save as `img/team/firstname.jpg`, square, about 600×600. Then in `team.html`
 swap the initials `<span>` for the commented-out `<img>` in that person's card.
+Speakers work the same way, in `img/speakers/`, from `collaborations.html`.
+
+### Organisation logos
+
+Save as `img/orgs/<name>.png` — transparent or white background, about 400px
+wide. Then swap the monogram `<span>` for the commented-out `<img>` in
+`collaborations.html`. Wanted: `ean.png`, `aisia.png`, `pbu.png`.
+
+## Photos still wanted
+
+From the team's own list. Until these exist the pages use text and colour
+instead, so nothing looks broken — but real photos of real people will do more
+for this site than anything else on the list.
+
+| Photo | Where it would go |
+| --- | --- |
+| Speaker event | `collaborations.html`, or the events page |
+| Young professionals meetup | `team.html`, professionals section |
+| Community photo — a good group shot | Home page, or the About page |
+| Events — a few from discussions and socials | Events page |
+| Conference / EAN event | Collaborations page |
+
+A note on consent: get permission before publishing a photo where individuals
+are recognisable, especially group shots taken at events. It is easier to ask on
+the night than to take a photo down later.
