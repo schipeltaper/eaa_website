@@ -42,6 +42,59 @@
     }
   });
 
+  /* Add-to-calendar. Everything is derived from one value: the data-ics
+     attribute on #subscribe. Empty means not configured yet, and the card falls
+     back to a plain explanation rather than showing buttons that go nowhere. */
+  var sub = document.getElementById("subscribe");
+
+  if (sub) {
+    var feed = (sub.getAttribute("data-ics") || "").trim();
+    var buttons = sub.querySelector("[data-subscribe-buttons]");
+    var fallback = sub.querySelector("[data-subscribe-fallback]");
+    var status = sub.querySelector("[data-subscribe-status]");
+
+    if (feed) {
+      // Accept the URL in either form and derive both.
+      var httpsFeed = feed.replace(/^webcal:\/\//i, "https://");
+      var webcalFeed = httpsFeed.replace(/^https:\/\//i, "webcal://");
+
+      var google = sub.querySelector('[data-subscribe="google"]');
+      var webcal = sub.querySelector('[data-subscribe="webcal"]');
+      var copy = sub.querySelector('[data-subscribe="copy"]');
+
+      if (google) {
+        google.href =
+          "https://calendar.google.com/calendar/r?cid=" +
+          encodeURIComponent(httpsFeed);
+      }
+      // Apple Calendar and Outlook both handle webcal: directly.
+      if (webcal) {
+        webcal.href = webcalFeed;
+      }
+      if (copy) {
+        copy.addEventListener("click", function () {
+          function done(ok) {
+            if (!status) return;
+            status.textContent = ok
+              ? "Link copied — paste it into your calendar app's “subscribe by URL”."
+              : "Could not copy automatically. The link is: " + httpsFeed;
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(httpsFeed).then(
+              function () { done(true); },
+              function () { done(false); }
+            );
+          } else {
+            done(false);
+          }
+        });
+      }
+
+      buttons.hidden = false;
+      if (fallback) fallback.hidden = true;
+    }
+  }
+
   /* WhatsApp invite: assembled on click so the link is never sitting in the
      page source for scrapers to harvest. */
   var reveal = document.getElementById("whatsapp-reveal");

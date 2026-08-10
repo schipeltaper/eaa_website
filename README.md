@@ -40,7 +40,7 @@ correcting, not the site — worth fixing before the next cohort receives it.
 | `contact.html` | How to reach us, and the WhatsApp invite |
 | `donate.html` | Giving to EAA, and giving well generally |
 | `styles.css` | All styling for every page |
-| `nav.js` | Mobile menu, dropdown, WhatsApp reveal |
+| `nav.js` | Mobile menu, dropdown, calendar subscribe, WhatsApp reveal |
 | `img/` | Images — see `img/README.md` |
 
 ## Design
@@ -58,16 +58,16 @@ who has been to the site before can keep using the old stylesheet even after a
 deploy — which looks like your change simply did not happen, while HTML changes
 show up immediately.
 
-So the pages link to `styles.css?v=4` and `nav.js?v=4`. **When you change either
-file, bump that number in all eleven pages** — here 4 becomes 5:
+So the pages link to `styles.css?v=5` and `nav.js?v=5`. **When you change either
+file, bump that number in all eleven pages** — here 5 becomes 6:
 
 ```sh
-sed -i '' 's/?v=4/?v=5/g' *.html   # macOS
-sed -i    's/?v=4/?v=5/g' *.html   # Linux
+sed -i '' 's/?v=5/?v=6/g' *.html   # macOS
+sed -i    's/?v=5/?v=6/g' *.html   # Linux
 ```
 
-(Then next time, 5 becomes 6, and so on. It only matters that the number is one
-the browser has not seen before.)
+(And so on next time. All that matters is using a number the browser has not
+seen before.)
 
 The new URL is one the browser has never seen, so it always fetches fresh. To
 check what is actually live regardless of your own cache, open the site in a
@@ -106,17 +106,41 @@ in a new snippet, drop its `width` and `height` attributes too.
 
 **To point at a different calendar**, replace the `cal-…` id in both files.
 
-### Letting people subscribe
+### Letting people subscribe — one value to fill in
 
-Luma shows its **Subscribe** control on the calendar's own page rather than
-reliably inside an embed — and an empty calendar has little to show — so the
-events page points people at the calendar on Luma instead of at the widget.
+The events page has an **Add our calendar to yours** card with Google Calendar,
+Apple/Outlook and Copy-link buttons. All three are built by `nav.js` from a
+single attribute, so there is exactly one thing to set:
 
-There is a hidden "Open the calendar on Luma" button in `events.html` waiting for
-that link. To switch it on: open your calendar on luma.com while signed in, copy
-the address (it looks like `luma.com/<name>`), put it in the `href`, and delete
-the `hidden` attribute on the surrounding `div`. Make sure the calendar is
-published/public first, or subscribing will not work for visitors.
+```html
+<div class="card" id="subscribe" data-ics="">
+```
+
+Put your Luma calendar's **iCal subscription URL** in `data-ics` and the buttons
+appear and work. Leave it empty and they stay hidden, with a short explanation
+shown instead — the card never looks broken.
+
+It accepts the URL in either form. Give it `https://…` or `webcal://…`; the
+script derives the other, sends Google the https version through its
+add-by-URL flow, and gives Apple and Outlook the `webcal://` version, which both
+open directly.
+
+**Where to get the URL.** On luma.com, open the calendar while signed in and look
+for Subscribe / iCal. Luma documents this at `help.luma.com/p/ical-syncing`.
+
+**A shortcut worth testing first.** Paste this into a browser:
+
+```
+https://api.lu.ma/ics/get?entity=calendar&id=cal-Fqocig0MZljxyNl
+```
+
+If it downloads a `.ics` file, that is the feed — put it straight into
+`data-ics`. If it errors, use whatever URL Luma gives you instead. That address
+is an educated guess at Luma's feed endpoint, which is undocumented and could
+not be verified when this was written, so test it rather than trusting it.
+
+Once set, this is genuinely one click for a visitor, and their calendar then
+updates itself whenever an event is added or a time changes.
 
 A Google Calendar embed would be an alternative, but it would mean maintaining
 events in two places. Keeping Luma as the single source is simpler.
