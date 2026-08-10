@@ -50,12 +50,12 @@ who has been to the site before can keep using the old stylesheet even after a
 deploy — which looks like your change simply did not happen, while HTML changes
 show up immediately.
 
-So the pages link to `styles.css?v=2` and `nav.js?v=2`. **When you change either
-file, bump that number in all eleven pages:**
+So the pages link to `styles.css?v=3` and `nav.js?v=3`. **When you change either
+file, bump that number in all eleven pages** (here, 3 → 4):
 
 ```sh
-sed -i '' 's/styles\.css?v=2/styles.css?v=3/g; s/nav\.js?v=2/nav.js?v=3/g' *.html   # macOS
-sed -i    's/styles\.css?v=2/styles.css?v=3/g; s/nav\.js?v=2/nav.js?v=3/g' *.html   # Linux
+sed -i '' 's/?v=3/?v=4/g' *.html   # macOS
+sed -i    's/?v=3/?v=4/g' *.html   # Linux
 ```
 
 The new URL is one the browser has never seen, so it always fetches fresh. To
@@ -97,15 +97,15 @@ in a new snippet, drop its `width` and `height` attributes too.
 
 ### Letting people subscribe
 
-The `events.html` page tells visitors to use the **Subscribe** button inside the
-embedded calendar. That is the reliable route: Luma hands out the right feed for
-Google Calendar, Apple Calendar or Outlook, and events then sync automatically —
-including later changes to a time or venue.
+Luma shows its **Subscribe** control on the calendar's own page rather than
+reliably inside an embed — and an empty calendar has little to show — so the
+events page points people at the calendar on Luma instead of at the widget.
 
-There is also a hidden "Open the calendar on Luma" button in `events.html`, ready
-for a one-click link. To switch it on, put your calendar's public URL
-(`luma.com/<your-calendar>`) in the `href` and delete the `hidden` attribute on
-the surrounding `div`.
+There is a hidden "Open the calendar on Luma" button in `events.html` waiting for
+that link. To switch it on: open your calendar on luma.com while signed in, copy
+the address (it looks like `luma.com/<name>`), put it in the `href`, and delete
+the `hidden` attribute on the surrounding `div`. Make sure the calendar is
+published/public first, or subscribing will not work for visitors.
 
 A Google Calendar embed would be an alternative, but it would mean maintaining
 events in two places. Keeping Luma as the single source is simpler.
@@ -157,21 +157,33 @@ while they are outstanding, but they are placeholder text a visitor would notice
 
 **Needed:**
 
-- **The team** — `team.html` is four placeholder cards
-- **Impact numbers and stories** — `index.html`, deliberately left as `—` rather
-  than guessed at
+- **Team roles, bios and photos** — `team.html` has everyone's name from the
+  planning doc but placeholder roles and bios. Each group's list ended in "..." so
+  people are probably missing. Naomi is commented out because the doc had a
+  question mark next to her name
+- **Speaker details** — `collaborations.html` has first names only for Ruben,
+  Vicky and Lobo. Add full names, what they work on, and what they spoke about
+- **Impact numbers** — `index.html`, deliberately left as `—` rather than guessed
+  at: events organised, programs run, pledges, members
 - **Donation route** — `donate.html` has no payment link or bank details yet
 - **WhatsApp invite code** — `contact.html`, as above
+- **Luma calendar link** — `events.html`, for the subscribe button
+- **Meetup.com link** — `team.html`, for the young professionals group
+- **KPIs** — `mission.html`. The planning doc had the heading but nothing under
+  it, so four are drafted from the theory of change. Replace with the real ones
+- **Organisation logos** — `collaborations.html`, for EAN, AISIA and PBU
+- **Photos** — see the list in `img/README.md`
 
 **Worth checking:**
 
 - Day, time and room for the weekly discussion (`events.html`)
 - The week-by-week program outline against this semester's curriculum (`programs.html`)
-- Named partner organisations (`collaborations.html`)
+- The year the rebuilding phase started (`about-eaa.html`)
 - Venue accessibility details (`events.html`)
-- Whether the mission statement wording is what the team agreed (`mission.html`)
 - The community health contact — a general inbox is a real barrier for sensitive
   reports, so a named person or dedicated address is better (`community-health.html`)
+- Whether the descriptions of AISIA and PBU on `collaborations.html` are how
+  those organisations would describe themselves
 
 ## Editing conventions
 

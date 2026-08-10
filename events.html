@@ -8,7 +8,7 @@
   <link rel="icon" href="img/favicon-96.png" sizes="96x96">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <meta name="color-scheme" content="only light">
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -85,21 +85,30 @@
             Calendar, Apple Calendar, Outlook, whatever you use.
           </p>
           <p class="text-muted">
-            Use the <strong>Subscribe</strong> button on the calendar above, and
-            pick your calendar app. Nothing else to do — new events show up on
+            Open the calendar on Luma and use its <strong>Subscribe</strong> button,
+            then pick your calendar app. Nothing else to do — new events show up on
             their own, and changes to a time or room update in your calendar too.
           </p>
           <!-- ===================================================================
-               OPTIONAL — a direct subscribe link.
-               Luma's calendar page has a Subscribe button that hands out the feed
-               for each calendar app. If you want a one-click link here instead,
-               open your calendar on luma.com, copy its public URL (luma.com/<your
-               calendar>), and put it in the href below, then delete this comment
-               and the hidden attribute.
+               TODO — add the public calendar link, then delete the hidden
+               attribute on the button row below.
+
+               Luma only shows its Subscribe control on the calendar's own page,
+               and an empty calendar has little to show, so the embed above is not
+               a reliable route to it. A direct link is.
+
+               Get it by opening your calendar on luma.com while signed in and
+               copying the address bar — it looks like luma.com/<name>. If the
+               calendar is not public yet, publish it first, or subscribing will
+               not work for visitors.
                =================================================================== -->
           <div class="button-row" hidden>
-            <a class="button-secondary" href="" rel="noopener" target="_blank">Open the calendar on Luma</a>
+            <a class="button" href="" rel="noopener" target="_blank">Open the calendar on Luma</a>
           </div>
+          <p class="reveal-note">
+            Not working yet? <a href="contact.html#whatsapp">Join the WhatsApp
+            group</a> — every event gets announced there too.
+          </p>
         </div>
         <div class="card">
           <span class="card-icon" aria-hidden="true">🔔</span>
@@ -289,6 +298,6 @@
   </div>
 </footer>
 
-<script src="nav.js?v=2"></script>
+<script src="nav.js?v=3"></script>
 </body>
 </html>
