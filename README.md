@@ -58,12 +58,12 @@ who has been to the site before can keep using the old stylesheet even after a
 deploy — which looks like your change simply did not happen, while HTML changes
 show up immediately.
 
-So the pages link to `styles.css?v=5` and `nav.js?v=5`. **When you change either
-file, bump that number in all eleven pages** — here 5 becomes 6:
+So the pages link to `styles.css?v=6` and `nav.js?v=6`. **When you change either
+file, bump that number in all eleven pages** — here 6 becomes 7:
 
 ```sh
-sed -i '' 's/?v=5/?v=6/g' *.html   # macOS
-sed -i    's/?v=5/?v=6/g' *.html   # Linux
+sed -i '' 's/?v=6/?v=7/g' *.html   # macOS
+sed -i    's/?v=6/?v=7/g' *.html   # Linux
 ```
 
 (And so on next time. All that matters is using a number the browser has not
@@ -106,41 +106,33 @@ in a new snippet, drop its `width` and `height` attributes too.
 
 **To point at a different calendar**, replace the `cal-…` id in both files.
 
-### Letting people subscribe — one value to fill in
+### Letting people subscribe
 
 The events page has an **Add our calendar to yours** card with Google Calendar,
-Apple/Outlook and Copy-link buttons. All three are built by `nav.js` from a
-single attribute, so there is exactly one thing to set:
+Apple/Outlook and Copy-link buttons. All three are built by `nav.js` from one
+attribute on `#subscribe` in `events.html`:
 
 ```html
-<div class="card" id="subscribe" data-ics="">
+data-ics="https://api.lu.ma/ics/get?entity=calendar&id=cal-Fqocig0MZljxyNl"
 ```
 
-Put your Luma calendar's **iCal subscription URL** in `data-ics` and the buttons
-appear and work. Leave it empty and they stay hidden, with a short explanation
-shown instead — the card never looks broken.
+That is Luma's iCal export for our calendar, confirmed to return the real event
+list. It takes the URL in either `https://` or `webcal://` form and derives the
+other — Google gets the https version through its add-by-URL flow, Apple and
+Outlook get `webcal://`, which both open natively.
 
-It accepts the URL in either form. Give it `https://…` or `webcal://…`; the
-script derives the other, sends Google the https version through its
-add-by-URL flow, and gives Apple and Outlook the `webcal://` version, which both
-open directly.
+Two things to know:
 
-**Where to get the URL.** On luma.com, open the calendar while signed in and look
-for Subscribe / iCal. Luma documents this at `help.luma.com/p/ical-syncing`.
+- **The endpoint is undocumented.** Luma could change it without notice. If the
+  buttons ever stop working, open that URL in a browser first: if it no longer
+  returns a `.ics`, get the current one from Luma's Subscribe / iCal control
+  (`help.luma.com/p/ical-syncing`) and replace `data-ics`. Nothing else changes.
+- **The feed calls itself "Personal".** Calendar apps use that name, so people
+  end up with a calendar called "Personal" until they rename it. If Luma's own
+  Subscribe control offers a URL with a better name, prefer it.
 
-**A shortcut worth testing first.** Paste this into a browser:
-
-```
-https://api.lu.ma/ics/get?entity=calendar&id=cal-Fqocig0MZljxyNl
-```
-
-If it downloads a `.ics` file, that is the feed — put it straight into
-`data-ics`. If it errors, use whatever URL Luma gives you instead. That address
-is an educated guess at Luma's feed endpoint, which is undocumented and could
-not be verified when this was written, so test it rather than trusting it.
-
-Once set, this is genuinely one click for a visitor, and their calendar then
-updates itself whenever an event is added or a time changes.
+Emptying `data-ics` hides the buttons and shows a short explanation instead, so
+the card is never broken while you are mid-change.
 
 A Google Calendar embed would be an alternative, but it would mean maintaining
 events in two places. Keeping Luma as the single source is simpler.
@@ -245,8 +237,6 @@ while they are outstanding, but they are placeholder text a visitor would notice
 - **Impact numbers** — `index.html`, deliberately left as `—` rather than guessed
   at: events organised, programs run, pledges, members
 - **Donation route** — `donate.html` has no payment link or bank details yet
-- **Luma calendar link** — `events.html`, for the subscribe button
-- **Meetup.com link** — `team.html`, for the young professionals group
 - **KPIs** — `mission.html`. The planning doc had the heading but nothing under
   it, so four are drafted from the theory of change. Replace with the real ones
 - **Organisation logos** — `collaborations.html`, for EAN, AISIA and PBU

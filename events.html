@@ -8,7 +8,7 @@
   <link rel="icon" href="img/favicon-96.png" sizes="96x96">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <meta name="color-scheme" content="only light">
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -77,29 +77,22 @@
 
       <div class="grid-2" style="margin-top: 2rem;">
         <!-- ===================================================================
-             ADD-TO-CALENDAR — one value to fill in: data-ics below.
+             ADD-TO-CALENDAR — configured. nav.js builds the Google Calendar
+             link, the webcal link for Apple/Outlook, and the copy-link button
+             from the data-ics value below. It accepts https:// or webcal://.
 
-             Put your Luma calendar's iCal subscription URL in data-ics and every
-             button here starts working. nav.js builds the Google Calendar link,
-             the webcal link for Apple/Outlook, and the copy-link button from that
-             one value. Until it is set, the buttons stay hidden and the note
-             underneath is shown instead, so nothing looks broken.
+             The feed is Luma's iCal export for our calendar. It is an
+             undocumented endpoint, so if these buttons ever stop working that is
+             the first thing to check: open the URL in a browser and see whether
+             it still returns a .ics file.
 
-             Where to get it: on luma.com open this calendar while signed in and
-             look for Subscribe / iCal. Luma's own help page for this is
-             help.luma.com/p/ical-syncing.
-
-             Shortcut worth trying first: paste this into a browser —
-
-                 https://api.lu.ma/ics/get?entity=calendar&id=cal-Fqocig0MZljxyNl
-
-             If it downloads a .ics file, that is your feed: put it in data-ics.
-             If it errors, ignore it and use the URL Luma gives you. (That address
-             is an educated guess at Luma's undocumented feed endpoint — it could
-             not be checked from where this was written, so test it rather than
-             trusting it.)
+             Note: the feed names itself "Personal", so that is what subscribers
+             see the calendar called in their app until they rename it. If Luma's
+             own Subscribe control ever offers a URL with a better name, prefer
+             that one.
              =================================================================== -->
-        <div class="card" id="subscribe" data-ics="">
+        <div class="card" id="subscribe"
+             data-ics="https://api.lu.ma/ics/get?entity=calendar&amp;id=cal-Fqocig0MZljxyNl">
           <span class="card-icon" aria-hidden="true">📅</span>
           <h3>Add our calendar to yours</h3>
           <p class="text-muted">
@@ -151,6 +144,16 @@
             Our bread and butter: bi-weekly socials on Tuesday evenings. No reading,
             no preparation, and newcomers are always welcome — this is the easiest
             thing to turn up to first. Time and location are on the calendar above.
+          </p>
+        </div>
+        <div class="card">
+          <p class="card-meta">Second Tuesday of the month</p>
+          <h3>EA drinks</h3>
+          <p class="text-muted">
+            Informal drinks, aimed at professionals but open to everyone. Organised
+            through
+            <a href="https://www.meetup.com/effectiefaltruisme/" rel="noopener" target="_blank">Meetup</a>
+            and listed on the calendar above.
           </p>
         </div>
         <div class="card">
@@ -307,6 +310,6 @@
   </div>
 </footer>
 
-<script src="nav.js?v=5"></script>
+<script src="nav.js?v=6"></script>
 </body>
 </html>
