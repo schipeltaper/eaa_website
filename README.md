@@ -33,6 +33,7 @@ correcting, not the site — worth fixing before the next cohort receives it.
 | `team.html` | The team |
 | `effective-altruism.html` | What effective altruism is |
 | `mission.html` | Mission statement |
+| `achievements.html` | What we have helped make happen — **placeholder data** |
 | `collaborations.html` | Who we work with |
 | `community-health.html` | Code of conduct and how to raise a problem |
 | `events.html` | Events, with the Luma calendar |
@@ -58,12 +59,12 @@ who has been to the site before can keep using the old stylesheet even after a
 deploy — which looks like your change simply did not happen, while HTML changes
 show up immediately.
 
-So the pages link to `styles.css?v=6` and `nav.js?v=6`. **When you change either
-file, bump that number in all eleven pages** — here 6 becomes 7:
+So the pages link to `styles.css?v=7` and `nav.js?v=7`. **When you change either
+file, bump that number in all twelve pages** — here 7 becomes 8:
 
 ```sh
-sed -i '' 's/?v=6/?v=7/g' *.html   # macOS
-sed -i    's/?v=6/?v=7/g' *.html   # Linux
+sed -i '' 's/?v=7/?v=8/g' *.html   # macOS
+sed -i    's/?v=7/?v=8/g' *.html   # Linux
 ```
 
 (And so on next time. All that matters is using a number the browser has not
@@ -88,6 +89,42 @@ Colours come from the logo and live as custom properties at the top of
 
 Every text/background pair meets WCAG AA (4.5:1). If you introduce a new colour,
 check it — <https://webaim.org/resources/contrastchecker/> takes ten seconds.
+
+## The achievements page
+
+**Every number on `achievements.html` is invented.** It exists so the page could
+be designed while the real counts are gathered. Three things keep that honest,
+and all three must stay until the data is real:
+
+1. The `.notice` banner at the top of the page.
+2. The dashed, hatched `.is-placeholder` treatment on the stat cards.
+3. The "Placeholder" pills on the section eyebrows.
+
+Delete all three in the same commit that puts real numbers in — not before, and
+not one without the others.
+
+### Replacing the numbers
+
+The three charts are **static inline SVG**, with no JavaScript and no chart
+library. Their coordinates are computed from the series values, so changing a
+number means redrawing the path. The table at the bottom of the page holds the
+same figures in readable form — update that first, then regenerate the paths (or
+ask for them to be regenerated from the table).
+
+The charts are deliberately three separate panels rather than one chart with
+three lines: the series are on very different scales, and a shared axis would
+imply a relationship the data does not contain.
+
+### Where each number comes from
+
+| Metric | Source | Catch |
+| --- | --- | --- |
+| GWWC pledges | Ask people — a question on fellowship feedback forms and event sign-ups | You cannot see who pledges, so this is always a floor |
+| Fellowship graduates | Airtable, filtered to people who completed rather than applied | Deduplicate anyone who took it twice |
+| People reached | Luma guest-list exports + Meetup attendee lists | Deduplicate by email across events, or you are counting attendances |
+
+The marginal-impact figure for a pledge should be **quoted from Giving What We
+Can's own published estimate**, with a link and the year — not paraphrased.
 
 ## The events calendar
 
