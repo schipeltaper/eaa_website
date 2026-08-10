@@ -50,13 +50,16 @@ who has been to the site before can keep using the old stylesheet even after a
 deploy — which looks like your change simply did not happen, while HTML changes
 show up immediately.
 
-So the pages link to `styles.css?v=3` and `nav.js?v=3`. **When you change either
-file, bump that number in all eleven pages** (here, 3 → 4):
+So the pages link to `styles.css?v=4` and `nav.js?v=4`. **When you change either
+file, bump that number in all eleven pages** — here 4 becomes 5:
 
 ```sh
-sed -i '' 's/?v=3/?v=4/g' *.html   # macOS
-sed -i    's/?v=3/?v=4/g' *.html   # Linux
+sed -i '' 's/?v=4/?v=5/g' *.html   # macOS
+sed -i    's/?v=4/?v=5/g' *.html   # Linux
 ```
+
+(Then next time, 5 becomes 6, and so on. It only matters that the number is one
+the browser has not seen before.)
 
 The new URL is one the browser has never seen, so it always fetches fresh. To
 check what is actually live regardless of your own cache, open the site in a
@@ -109,6 +112,26 @@ published/public first, or subscribing will not work for visitors.
 
 A Google Calendar embed would be an alternative, but it would mean maintaining
 events in two places. Keeping Luma as the single source is simpler.
+
+### Program sessions on the calendar
+
+The same calendar is embedded on `programs.html`, so program sessions show up
+there automatically once you add them on Luma. The point is that someone finding
+you in week three can see a cohort is running even though they cannot join it —
+and knows to ask about the next one.
+
+Two ways to run it:
+
+- **One calendar** (what it does now). Add each session as an event with a clear
+  title — `Intro Program · Week 3` makes the sequence obvious. For sessions
+  closed to newcomers, turn registration off or set the event to invite-only on
+  Luma, so people see it without being able to sign up by mistake.
+- **A separate programs calendar.** Make a second calendar on Luma and swap its
+  id into the `src` on `programs.html`. Cleaner separation, two calendars to keep
+  up to date.
+
+Start with one. Split it only if the events calendar gets so busy that program
+sessions are hard to pick out.
 
 ## The WhatsApp invite
 
