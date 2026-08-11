@@ -59,12 +59,12 @@ who has been to the site before can keep using the old stylesheet even after a
 deploy — which looks like your change simply did not happen, while HTML changes
 show up immediately.
 
-So the pages link to `styles.css?v=7` and `nav.js?v=7`. **When you change either
-file, bump that number in all twelve pages** — here 7 becomes 8:
+So the pages link to `styles.css?v=8` and `nav.js?v=8`. **When you change either
+file, bump that number in all twelve pages** — here 8 becomes 9:
 
 ```sh
-sed -i '' 's/?v=7/?v=8/g' *.html   # macOS
-sed -i    's/?v=7/?v=8/g' *.html   # Linux
+sed -i '' 's/?v=8/?v=9/g' *.html   # macOS
+sed -i    's/?v=8/?v=9/g' *.html   # Linux
 ```
 
 (And so on next time. All that matters is using a number the browser has not
@@ -125,6 +125,31 @@ imply a relationship the data does not contain.
 
 The marginal-impact figure for a pledge should be **quoted from Giving What We
 Can's own published estimate**, with a link and the year — not paraphrased.
+
+## The fellowship sign-up
+
+The sign-up button on `programs.html` and `index.html` points at the Airtable
+form:
+
+```
+https://airtable.com/appRIUBhz7R0VKN4G/shrLYu2rlYCLolmFY
+```
+
+**Three places carry the cohort's dates**, and they need updating together each
+semester:
+
+1. `programs.html` — the "The essentials" list (*Next cohort starts* / *When*)
+2. `programs.html` — the "Applications are open" card in the Dates section
+3. `index.html` — the "At a glance" list on the home page
+
+Individual session dates are deliberately not listed anywhere: those go on the
+Luma calendar, which is embedded on all three pages.
+
+**When a cohort has started and the next is not open yet**, swap the sign-up
+button in the "Applications are open" card back to the mailto — the replacement
+line is sitting in a comment right above it — and retitle the card "Tell me when
+the next cohort opens". Otherwise the form collects people for a cohort they
+cannot join.
 
 ## The events calendar
 
