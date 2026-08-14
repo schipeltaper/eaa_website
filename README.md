@@ -59,12 +59,12 @@ who has been to the site before can keep using the old stylesheet even after a
 deploy — which looks like your change simply did not happen, while HTML changes
 show up immediately.
 
-So the pages link to `styles.css?v=9` and `nav.js?v=9`. **When you change either
-file, bump that number in all twelve pages** — here 9 becomes 10:
+So the pages link to `styles.css?v=10` and `nav.js?v=10`. **When you change either
+file, bump that number in all twelve pages** — here 10 becomes 11:
 
 ```sh
-sed -i '' 's/?v=9/?v=10/g' *.html   # macOS
-sed -i    's/?v=9/?v=10/g' *.html   # Linux
+sed -i '' 's/?v=10/?v=11/g' *.html   # macOS
+sed -i    's/?v=10/?v=11/g' *.html   # Linux
 ```
 
 (And so on next time. All that matters is using a number the browser has not
@@ -138,10 +138,9 @@ https://airtable.com/appRIUBhz7R0VKN4G/shrLYu2rlYCLolmFY
 The course is **run by Effective Altruism Netherlands**; we run a local cohort of
 it. The page says so and links to them — worth keeping accurate if that changes.
 
-**Course length is unresolved.** The cohort was described as six weeks, but the
-curriculum is in five parts (Week 1–5). Three places say "6 weeks": the
-essentials list and the closing band on `programs.html`, and the at-a-glance box
-on `index.html`. Settle which it is and make all three agree.
+**Length:** six weeks — five of material (Week 1–5), then a social with nothing
+to prepare. Three places say so: the essentials list and the closing band on
+`programs.html`, and the at-a-glance box on `index.html`. Keep them in step.
 
 **Three places carry the cohort's dates**, and they need updating together each
 semester:
