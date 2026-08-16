@@ -63,9 +63,12 @@
       var copy = sub.querySelector('[data-subscribe="copy"]');
 
       if (google) {
+        /* Google's add-by-URL wants the webcal:// form on the /render endpoint.
+           Handing it an https:// URL makes Google treat the feed as a one-off
+           import rather than a subscription, and it often just fails. */
         google.href =
-          "https://calendar.google.com/calendar/r?cid=" +
-          encodeURIComponent(httpsFeed);
+          "https://calendar.google.com/calendar/render?cid=" +
+          encodeURIComponent(webcalFeed);
       }
       // Apple Calendar and Outlook both handle webcal: directly.
       if (webcal) {

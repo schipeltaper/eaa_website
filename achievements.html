@@ -7,8 +7,9 @@
   <meta name="description" content="What Effective Altruism Amsterdam has helped make happen — pledges taken, people through the fellowship, and organisations we have helped.">
   <link rel="icon" href="img/favicon-96.png" sizes="96x96">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="robots" content="noindex">
   <meta name="color-scheme" content="only light">
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=12">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -27,283 +28,57 @@
           <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">About EAA</button>
           <ul class="dropdown">
             <li><a href="about-eaa.html">Overview</a></li>
-            <li><a href="team.html">The Team</a></li>
             <li><a href="effective-altruism.html">Effective Altruism</a></li>
             <li><a href="mission.html">Mission Statement</a></li>
-            <li><a href="achievements.html" aria-current="page">Achievements</a></li>
-            <li><a href="collaborations.html">Collaborations</a></li>
             <li><a href="community-health.html">Community Health</a></li>
           </ul>
         </li>
         <li><a class="nav-link" href="events.html">Events</a></li>
         <li><a class="nav-link" href="programs.html">Programs</a></li>
         <li><a class="nav-link" href="contact.html">Contact</a></li>
-        <li><a class="nav-link nav-cta" href="donate.html">Donate</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
+<!-- ===========================================================================
+     COMING SOON — the real content of this page is not published yet.
+
+     It is not lost. The full version is in git, in the commit before the one
+     that replaced it. To see it or bring it back:
+
+         git show 9ec70eb:achievements.html                  # look at it
+         git show 9ec70eb:achievements.html > achievements.html   # restore it
+
+     After restoring, put this page back into the navigation: the "About EAA"
+     dropdown and the footer list in every *.html file. See README.md, under
+     "Pages held back for launch", for exactly which lines.
+     =========================================================================== -->
 <main id="main">
   <div class="page-header">
     <div class="container">
       <p class="breadcrumb"><a href="about-eaa.html">About EAA</a> / Achievements</p>
       <h1>Achievements</h1>
-      <p>
-        A community is only worth running if something comes of it. This is our
-        attempt to say honestly what has.
-      </p>
+      <p>What this community has helped make happen.</p>
     </div>
   </div>
 
-  <!-- ===================================================================
-       PLACEHOLDER DATA — every number on this page is invented.
-
-       Nothing here has been measured. The figures below are illustrative so
-       the page can be designed and reviewed; they must be replaced with real
-       counts before anyone treats this page as a record of what EAA has done.
-
-       To replace them:
-         1. The three charts are static inline SVG, generated from the numbers
-            in the table at the bottom of this page. Update the table, then
-            redraw the paths — or ask for them to be regenerated.
-         2. The headline figures in the stat row repeat the final value of each
-            series. Keep them in step with the table.
-         3. Delete the .notice block below once the data is real. That banner is
-            the only thing standing between placeholder numbers and a reader who
-            believes them.
-       =================================================================== -->
   <section class="section">
-    <div class="container">
-      <div class="notice" role="note">
-        <p>
-          <strong>These numbers are placeholders.</strong> Every figure and chart
-          on this page is made up, and is here so the page can be built while the
-          real counts are gathered. Nothing below has been measured yet. Accurate
-          information is coming soon.
-        </p>
-      </div>
-
-      <div class="section-head">
-        <span class="eyebrow">Where we are <span class="pill pill-warn">Placeholder</span></span>
-        <h2>The headline numbers</h2>
-        <p>
-          Cumulative totals since the group was founded. Each one is explained
-          under <a href="#how">how we count</a>.
-        </p>
-      </div>
-
-      <!-- Only invented numbers belong in this row, all carrying the placeholder
-           treatment. Anything real (the AISIA revival) has its own section below,
-           so a true fact is never shown inside a card marked as fabricated. -->
-      <div class="grid">
-        <div class="card stat is-placeholder">
-          <span class="stat-number">12</span>
-          <span class="stat-label">Giving What We Can pledges</span>
-          <span class="stat-note">People who took a pledge after finding us</span>
-        </div>
-        <div class="card stat is-placeholder">
-          <span class="stat-number">84</span>
-          <span class="stat-label">Fellowship graduates</span>
-          <span class="stat-note">People we have introduced to the ideas properly</span>
-        </div>
-        <div class="card stat is-placeholder">
-          <span class="stat-number">520</span>
-          <span class="stat-label">People reached at events</span>
-          <span class="stat-note">Distinct individuals, not attendances</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ Growth over time ============ -->
-  <section class="section section-alt" id="growth">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Over time <span class="pill pill-warn">Placeholder</span></span>
-        <h2>How it has grown</h2>
-        <p>
-          Three separate charts rather than one: the numbers are on very different
-          scales, and putting them on a shared axis would invent a relationship
-          that is not in the data.
-        </p>
-      </div>
-
-      <div class="grid">
-      <figure class="chart">
-        <figcaption>
-          <h3>Fellowship graduates</h3>
-          <p class="text-muted">people who have completed the Introductory EA Fellowship</p>
-        </figcaption>
-        <svg viewBox="0 0 320 180" role="img"
-             aria-label="Fellowship graduates, cumulative. Placeholder data rising from 8 in 2023 H2 to 84 in 2026 H1.">
-          <line x1="36.0" y1="152.0" x2="304.0" y2="152.0" class="cg"/><line x1="36.0" y1="84.0" x2="304.0" y2="84.0" class="cg"/><line x1="36.0" y1="16.0" x2="304.0" y2="16.0" class="cg"/>
-          <path d="M 36.0 139.2 L 89.6 121.6 L 143.2 102.4 L 196.8 75.2 L 250.4 44.8 L 304.0 17.6 L 304.0 152.0 L 36.0 152.0 Z" class="ca"/>
-          <path d="M 36.0 139.2 L 89.6 121.6 L 143.2 102.4 L 196.8 75.2 L 250.4 44.8 L 304.0 17.6" class="cl"/>
-          <circle cx="304.0" cy="17.6" r="4.5" class="cd"/>
-          <text x="28.0" y="155.5" class="cy">0</text><text x="28.0" y="87.5" class="cy">42</text><text x="28.0" y="19.5" class="cy">85</text>
-          <text x="36.0" y="170.0" class="cx" text-anchor="start">2023 H2</text><text x="304.0" y="170.0" class="cx" text-anchor="end">2026 H1</text>
-        </svg>
-        <p class="chart-value"><strong>84</strong> to date</p>
-      </figure>
-      <figure class="chart">
-        <figcaption>
-          <h3>Giving What We Can pledges</h3>
-          <p class="text-muted">community members who took a pledge after finding EAA</p>
-        </figcaption>
-        <svg viewBox="0 0 320 180" role="img"
-             aria-label="Giving What We Can pledges, cumulative. Placeholder data rising from 1 in 2023 H2 to 12 in 2026 H1.">
-          <line x1="36.0" y1="152.0" x2="304.0" y2="152.0" class="cg"/><line x1="36.0" y1="84.0" x2="304.0" y2="84.0" class="cg"/><line x1="36.0" y1="16.0" x2="304.0" y2="16.0" class="cg"/>
-          <path d="M 36.0 142.9 L 89.6 133.9 L 143.2 115.7 L 196.8 97.6 L 250.4 70.4 L 304.0 43.2 L 304.0 152.0 L 36.0 152.0 Z" class="ca"/>
-          <path d="M 36.0 142.9 L 89.6 133.9 L 143.2 115.7 L 196.8 97.6 L 250.4 70.4 L 304.0 43.2" class="cl"/>
-          <circle cx="304.0" cy="43.2" r="4.5" class="cd"/>
-          <text x="28.0" y="155.5" class="cy">0</text><text x="28.0" y="87.5" class="cy">7</text><text x="28.0" y="19.5" class="cy">15</text>
-          <text x="36.0" y="170.0" class="cx" text-anchor="start">2023 H2</text><text x="304.0" y="170.0" class="cx" text-anchor="end">2026 H1</text>
-        </svg>
-        <p class="chart-value"><strong>12</strong> to date</p>
-      </figure>
-      <figure class="chart">
-        <figcaption>
-          <h3>People reached at events</h3>
-          <p class="text-muted">distinct individuals who attended at least one event</p>
-        </figcaption>
-        <svg viewBox="0 0 320 180" role="img"
-             aria-label="People reached at events, cumulative. Placeholder data rising from 40 in 2023 H2 to 520 in 2026 H1.">
-          <line x1="36.0" y1="152.0" x2="304.0" y2="152.0" class="cg"/><line x1="36.0" y1="84.0" x2="304.0" y2="84.0" class="cg"/><line x1="36.0" y1="16.0" x2="304.0" y2="16.0" class="cg"/>
-          <path d="M 36.0 142.1 L 89.6 128.5 L 143.2 112.4 L 196.8 90.2 L 250.4 60.5 L 304.0 23.4 L 304.0 152.0 L 36.0 152.0 Z" class="ca"/>
-          <path d="M 36.0 142.1 L 89.6 128.5 L 143.2 112.4 L 196.8 90.2 L 250.4 60.5 L 304.0 23.4" class="cl"/>
-          <circle cx="304.0" cy="23.4" r="4.5" class="cd"/>
-          <text x="28.0" y="155.5" class="cy">0</text><text x="28.0" y="87.5" class="cy">275</text><text x="28.0" y="19.5" class="cy">550</text>
-          <text x="36.0" y="170.0" class="cx" text-anchor="start">2023 H2</text><text x="304.0" y="170.0" class="cx" text-anchor="end">2026 H1</text>
-        </svg>
-        <p class="chart-value"><strong>520</strong> to date</p>
-      </figure>
-
-      </div>
-
-      <details class="faq" style="margin-top: 1.5rem;">
-        <summary>See the numbers as a table</summary>
-        <div style="overflow-x: auto;">
-          <table class="data-table">
-            <caption>Cumulative totals by semester. Placeholder data.</caption>
-            <thead>
-              <tr>
-                <th scope="col">Period</th>
-                <th scope="col">Fellowship graduates</th>
-                <th scope="col">GWWC pledges</th>
-                <th scope="col">People reached</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">2023 H2</th><td>8</td><td>1</td><td>40</td></tr>
-              <tr><th scope="row">2024 H1</th><td>19</td><td>2</td><td>95</td></tr>
-              <tr><th scope="row">2024 H2</th><td>31</td><td>4</td><td>160</td></tr>
-              <tr><th scope="row">2025 H1</th><td>48</td><td>6</td><td>250</td></tr>
-              <tr><th scope="row">2025 H2</th><td>67</td><td>9</td><td>370</td></tr>
-              <tr><th scope="row">2026 H1</th><td>84</td><td>12</td><td>520</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-    </div>
-  </section>
-
-  <!-- ============ Organisations helped ============ -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Beyond our own numbers</span>
-        <h2>Organisations we have helped</h2>
-        <p>
-          Some of what a community does shows up in other people's work rather
-          than its own headcount.
-        </p>
-      </div>
-      <div class="grid-2">
-        <div class="card">
-          <span class="card-icon" aria-hidden="true">&#9889;</span>
-          <h3>AISIA, revived in summer 2025</h3>
-          <p class="text-muted">
-            The AI Safety Initiative Amsterdam had gone quiet. People from this
-            community helped get it running again — and it now runs its own reading
-            groups, programs and events on making advanced AI systems safe.
-          </p>
-          <p><a class="arrow" href="collaborations.html">More about who we work with</a></p>
-        </div>
-        <div class="card">
-          <h3>Add the others</h3>
-          <p class="text-muted">
-            <!-- TODO: other organisations EAA has helped start, revive or sustain.
-                 Worth including: groups in other cities you helped get going,
-                 projects that started as a conversation here, people placed into
-                 roles at EA organisations. -->
-            If we have helped another group get started, kept one going, or lent
-            people to a project that needed them, it belongs here. Add each with a
-            date and a sentence on what we actually did.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ Methodology ============ -->
-  <section class="section section-alt" id="how">
     <div class="container">
       <div class="prose">
-        <span class="eyebrow">Being straight about it</span>
-        <h2>How we count</h2>
-        <p>
-          Impact numbers are easy to inflate without meaning to, so it is worth
-          writing down what each of these does and does not claim.
-        </p>
-
-        <dl class="definition-list">
-          <dt>Giving What We Can pledges</dt>
-          <dd>
-            People who told us they took a pledge after getting involved here. We
-            cannot see who pledges, so this depends on people telling us — it is a
-            floor, not a total.
-            <!-- TODO: once you have GWWC's published estimate of what a pledge is
-                 worth in expected donations, cite it here with a link. Do not
-                 paraphrase a number from memory — use their figure and their
-                 wording, and say which year it is from. -->
-          </dd>
-          <dt>Fellowship graduates</dt>
-          <dd>
-            People who finished the six-week Introductory EA Fellowship. Finishing,
-            not signing up.
-          </dd>
-          <dt>People reached at events</dt>
-          <dd>
-            Distinct individuals who came to at least one event, deduplicated across
-            the whole period. Someone at twenty events counts once.
-          </dd>
-          <dt>What none of this measures</dt>
-          <dd>
-            Whether any of it changed what people actually do. That is the thing we
-            care about, and it needs asking people, not counting them — see
-            <a href="mission.html">what we measure</a>.
-          </dd>
-        </dl>
-
-        <div class="callout">
+        <div class="notice" role="note">
           <p>
-            <strong>Did we cause it?</strong> Someone who was already heading in this
-            direction and happened to meet us is not our impact. Where we can, we ask
-            people directly whether contact with EAA made a difference, and we would
-            rather under-claim than over-claim.
+            <strong>Coming soon.</strong> The page is built, but the numbers on it are not real yet. We would rather publish nothing than publish figures we have not actually measured, so it stays here until the counts are in.
           </p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-band">
-    <div class="container">
-      <h2>Want to be in next year's numbers?</h2>
-      <p>The fellowship is the usual way in, and everything else is open to anyone.</p>
-      <div class="button-row">
-        <a class="button" href="programs.html">About the fellowship</a>
+        <p>
+          In the meantime, the rest of the site is up to date &mdash; and if there is
+          something you wanted to find here, just ask.
+        </p>
+        <div class="button-row">
+          <a class="button" href="mailto:info@eaamsterdam.com">Email us</a>
+          <a class="button-secondary" href="index.html">Back to the home page</a>
+        </div>
       </div>
     </div>
   </section>
@@ -324,11 +99,8 @@
         <h2>About EAA</h2>
         <ul>
           <li><a href="about-eaa.html">Overview</a></li>
-          <li><a href="team.html">The Team</a></li>
           <li><a href="effective-altruism.html">Effective Altruism</a></li>
           <li><a href="mission.html">Mission Statement</a></li>
-          <li><a href="achievements.html">Achievements</a></li>
-          <li><a href="collaborations.html">Collaborations</a></li>
           <li><a href="community-health.html">Community Health</a></li>
         </ul>
       </div>
@@ -338,7 +110,6 @@
           <li><a href="events.html">Events</a></li>
           <li><a href="programs.html">Programs</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a href="donate.html">Donate</a></li>
         </ul>
       </div>
       <div>
@@ -358,6 +129,6 @@
   </div>
 </footer>
 
-<script src="nav.js?v=10"></script>
+<script src="nav.js?v=12"></script>
 </body>
 </html>
