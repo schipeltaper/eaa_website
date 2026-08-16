@@ -44,6 +44,42 @@ correcting, not the site — worth fixing before the next cohort receives it.
 | `nav.js` | Mobile menu, dropdown, calendar subscribe, WhatsApp reveal |
 | `img/` | Images — see `img/README.md` |
 
+## Pages held back for launch
+
+Four pages are published as **"coming soon"** placeholders so the rest of the
+site could go live: `team.html`, `achievements.html`, `collaborations.html` and
+`donate.html`.
+
+Each was held back for a reason: the team page needs everyone's consent before
+naming and photographing them, achievements has no real numbers yet,
+collaborations describes organisations who have not seen the description, and
+there is no donation route set up.
+
+**The real content is in git, not deleted.** Each placeholder file carries the
+command at the top:
+
+```sh
+git show 9ec70eb:team.html            # look at the old version
+git show 9ec70eb:team.html > team.html  # restore it
+```
+
+**To bring a page back you must also re-link it**, in every `*.html` file:
+
+- the **About EAA dropdown** in the header — `team.html`, `achievements.html` and
+  `collaborations.html` each had a `<li>` there
+- the **footer** — the same three under "About EAA", and `donate.html` under
+  "Get involved"
+- **Donate** was also the call-to-action button in the header:
+  `<li><a class="nav-link nav-cta" href="donate.html">Donate</a></li>`
+
+A few in-body links were removed at the same time and are worth restoring too:
+the team and collaborations cards on `about-eaa.html`, the "I represent an
+organisation" answer on `contact.html`, and the impact section on `index.html`
+(which showed placeholder dashes).
+
+Each placeholder also carries `<meta name="robots" content="noindex">` so search
+engines do not index an empty page. Remove that line when the page is real.
+
 ## Design
 
 **Light mode only.** There is no dark theme; the site looks the same for
@@ -59,12 +95,12 @@ who has been to the site before can keep using the old stylesheet even after a
 deploy — which looks like your change simply did not happen, while HTML changes
 show up immediately.
 
-So the pages link to `styles.css?v=11` and `nav.js?v=11`. **When you change either
-file, bump that number in all twelve pages** — here 11 becomes 12:
+So the pages link to `styles.css?v=12` and `nav.js?v=12`. **When you change either
+file, bump that number in all twelve pages** — here 12 becomes 13:
 
 ```sh
-sed -i '' 's/?v=11/?v=12/g' *.html   # macOS
-sed -i    's/?v=11/?v=12/g' *.html   # Linux
+sed -i '' 's/?v=12/?v=13/g' *.html   # macOS
+sed -i    's/?v=12/?v=13/g' *.html   # Linux
 ```
 
 (And so on next time. All that matters is using a number the browser has not
