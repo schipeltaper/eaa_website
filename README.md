@@ -59,12 +59,12 @@ who has been to the site before can keep using the old stylesheet even after a
 deploy — which looks like your change simply did not happen, while HTML changes
 show up immediately.
 
-So the pages link to `styles.css?v=10` and `nav.js?v=10`. **When you change either
-file, bump that number in all twelve pages** — here 10 becomes 11:
+So the pages link to `styles.css?v=11` and `nav.js?v=11`. **When you change either
+file, bump that number in all twelve pages** — here 11 becomes 12:
 
 ```sh
-sed -i '' 's/?v=10/?v=11/g' *.html   # macOS
-sed -i    's/?v=10/?v=11/g' *.html   # Linux
+sed -i '' 's/?v=11/?v=12/g' *.html   # macOS
+sed -i    's/?v=11/?v=12/g' *.html   # Linux
 ```
 
 (And so on next time. All that matters is using a number the browser has not
