@@ -209,12 +209,14 @@ form:
 https://airtable.com/appRIUBhz7R0VKN4G/shrLYu2rlYCLolmFY
 ```
 
-The course is **run by Effective Altruism Netherlands**; we run a local cohort of
-it. The page says so and links to them — worth keeping accurate if that changes.
+**We run the fellowship ourselves.** An earlier version of the page said EA
+Netherlands ran it and linked to them; that was wrong and has been corrected. If
+the curriculum has a source worth crediting, credit that instead — but do not
+attribute the running of it to another organisation.
 
 **Length:** six weeks — five of material (Week 1–5), then a social with nothing
-to prepare. Three places say so: the essentials list and the closing band on
-`programs.html`, and the at-a-glance box on `index.html`. Keep them in step.
+to prepare. Two places say so: the essentials list on `programs.html`, and the
+at-a-glance box on `index.html`. Keep them in step.
 
 **Three places carry the cohort's dates**, and they need updating together each
 semester:
