@@ -29,10 +29,9 @@ correcting, not the site — worth fixing before the next cohort receives it.
 | File | What it is |
 | --- | --- |
 | `index.html` | Home page |
-| `about-eaa.html` | About EAA overview, links to the sub-pages |
 | `team.html` | The team |
-| `effective-altruism.html` | What effective altruism is |
-| `mission.html` | Mission statement |
+| `effective-altruism.html` | Effective altruism in one sentence, then links to better sources |
+| `mission.html` | Core purpose, values and outcome vision |
 | `achievements.html` | What we have helped make happen — **placeholder data** |
 | `collaborations.html` | Who we work with |
 | `community-health.html` | Code of conduct and how to raise a problem |
@@ -73,32 +72,51 @@ git show 9ec70eb:team.html > team.html  # restore it
   `<li><a class="nav-link nav-cta" href="donate.html">Donate</a></li>`
 
 A few in-body links were removed at the same time and are worth restoring too:
-the team and collaborations cards on `about-eaa.html`, the "I represent an
-organisation" answer on `contact.html`, and the impact section on `index.html`
-(which showed placeholder dashes).
+the "I represent an organisation" answer on `contact.html`, and the impact
+section on `index.html` (which showed placeholder dashes). The old versions also
+carry a breadcrumb to `about-eaa.html`, which no longer exists — delete that line
+when restoring.
 
 Each placeholder also carries `<meta name="robots" content="noindex">` so search
 engines do not index an empty page. Remove that line when the page is real.
 
 ## Sections hidden inside live pages
 
-Two sections on otherwise-live pages are commented out rather than deleted, each
-wrapped in a marked block that says why and how to bring it back:
+One section on a live page is commented out rather than deleted, wrapped in a
+marked block that says why and how to bring it back:
 
-- **"How we got here"** (`about-eaa.html`) — the founding-to-rebuilding timeline.
-  Hidden because it is incomplete: the year the restart began is still missing.
 - **"What we run"** (`events.html`) — six cards describing socials, talks,
   workshops, retreats and fellowship sessions. Hidden to keep the events page
   simple; the calendar above it already shows what is on.
 
-To restore either one, delete the opening `<!-- ============ … ===` marker and
-the matching `============ end of hidden … ============ -->` line below the
-section. Nothing else on the site links to them.
+To restore it, delete the opening `<!-- ============ … ===` marker and the
+matching `============ end of hidden … ============ -->` line below the section,
+and drop `section-alt` from the FAQ section underneath (it took over the shaded
+background). Nothing else on the site links to it.
 
-**HTML comments cannot nest**, so do not add a comment inside either block — it
-would close the wrapper early and dump the rest of the block onto the page. (The
-timeline's own `TODO` note had to be deleted for this reason; the year it asked
-for is in the list further down.)
+**HTML comments cannot nest**, so do not add a comment inside the block — it
+would close the wrapper early and dump the rest of it onto the page.
+
+## Deleted on purpose
+
+These were removed rather than hidden, because the judgement was that the site
+reads better without them. Nothing is lost — `git show bc7fedd:<file>` brings
+back the version just before each one went:
+
+- **`about-eaa.html`**, the About EAA overview page. It restated what the home
+  page and the sub-pages already said. The "About EAA" nav item is still a
+  dropdown, now with three entries and no landing page of its own, and the
+  breadcrumbs that pointed at it are gone from every sub-page.
+- **The body of `effective-altruism.html`** — the core ideas, cause areas and
+  criticisms. The page is now its one-sentence definition plus links to the
+  organisations who explain it full time. Only root domains are linked, so the
+  links do not rot.
+- **Theory of change and KPIs** (`mission.html`). The KPIs were drafted from the
+  theory of change rather than agreed by the team, so they were guesses on a page
+  about honesty. Also the "In plainer terms" card beside the outcome vision.
+
+If any of this comes back, remember the nav and footer are copied into every
+page — see the editing conventions at the bottom.
 
 ## Design
 
@@ -116,7 +134,7 @@ deploy — which looks like your change simply did not happen, while HTML change
 show up immediately.
 
 So the pages link to `styles.css?v=13` and `nav.js?v=13`. **When you change either
-file, bump that number in all twelve pages** — here 13 becomes 14:
+file, bump that number in all eleven pages** — here 13 becomes 14:
 
 ```sh
 sed -i '' 's/?v=13/?v=14/g' *.html   # macOS
@@ -362,8 +380,6 @@ while they are outstanding, but they are placeholder text a visitor would notice
 - **Impact numbers** — `index.html`, deliberately left as `—` rather than guessed
   at: events organised, programs run, pledges, members
 - **Donation route** — `donate.html` has no payment link or bank details yet
-- **KPIs** — `mission.html`. The planning doc had the heading but nothing under
-  it, so four are drafted from the theory of change. Replace with the real ones
 - **Organisation logos** — `collaborations.html`, for EAN, AISIA and PBU
 - **Photos** — see the list in `img/README.md`
 
@@ -371,8 +387,6 @@ while they are outstanding, but they are placeholder text a visitor would notice
 
 - Day, time and room for the weekly discussion (`events.html`)
 - The start date, weekly time and length of the current cohort (`programs.html`)
-- The year the rebuilding phase started — needed before the hidden "How we got
-  here" timeline can go live (`about-eaa.html`)
 - Venue accessibility details (`events.html`)
 - The community health contact — a general inbox is a real barrier for sensitive
   reports, so a named person or dedicated address is better (`community-health.html`)
@@ -392,7 +406,7 @@ while they are outstanding, but they are placeholder text a visitor would notice
 
 - **Header and footer are copied into each page.** There is no templating, which
   is the trade-off for having no build step. If you change a nav link, change it
-  in all eleven files — `grep -l "about-eaa.html" *.html` lists them.
+  in all eleven files — `grep -l "site-nav" *.html` lists them.
 - **The current page** is marked with `aria-current="page"` on its nav link. Keep
   that accurate when adding pages.
 - **New page?** Copy an existing one, change the `<title>`, the `<meta
