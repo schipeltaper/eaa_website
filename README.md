@@ -29,7 +29,7 @@ correcting, not the site — worth fixing before the next cohort receives it.
 | File | What it is |
 | --- | --- |
 | `index.html` | Home page |
-| `about-eaa.html` | About EAA overview, links to the five sub-pages |
+| `about-eaa.html` | About EAA overview, links to the sub-pages |
 | `team.html` | The team |
 | `effective-altruism.html` | What effective altruism is |
 | `mission.html` | Mission statement |
@@ -37,7 +37,7 @@ correcting, not the site — worth fixing before the next cohort receives it.
 | `collaborations.html` | Who we work with |
 | `community-health.html` | Code of conduct and how to raise a problem |
 | `events.html` | Events, with the Luma calendar |
-| `programs.html` | Introductory EA Fellowship and what comes after |
+| `programs.html` | Introductory EA Fellowship — the essentials, the dates and the sign-up |
 | `contact.html` | How to reach us, and the WhatsApp invite |
 | `donate.html` | Giving to EAA, and giving well generally |
 | `styles.css` | All styling for every page |
@@ -80,6 +80,26 @@ organisation" answer on `contact.html`, and the impact section on `index.html`
 Each placeholder also carries `<meta name="robots" content="noindex">` so search
 engines do not index an empty page. Remove that line when the page is real.
 
+## Sections hidden inside live pages
+
+Two sections on otherwise-live pages are commented out rather than deleted, each
+wrapped in a marked block that says why and how to bring it back:
+
+- **"How we got here"** (`about-eaa.html`) — the founding-to-rebuilding timeline.
+  Hidden because it is incomplete: the year the restart began is still missing.
+- **"What we run"** (`events.html`) — six cards describing socials, talks,
+  workshops, retreats and fellowship sessions. Hidden to keep the events page
+  simple; the calendar above it already shows what is on.
+
+To restore either one, delete the opening `<!-- ============ … ===` marker and
+the matching `============ end of hidden … ============ -->` line below the
+section. Nothing else on the site links to them.
+
+**HTML comments cannot nest**, so do not add a comment inside either block — it
+would close the wrapper early and dump the rest of the block onto the page. (The
+timeline's own `TODO` note had to be deleted for this reason; the year it asked
+for is in the list further down.)
+
 ## Design
 
 **Light mode only.** There is no dark theme; the site looks the same for
@@ -95,12 +115,12 @@ who has been to the site before can keep using the old stylesheet even after a
 deploy — which looks like your change simply did not happen, while HTML changes
 show up immediately.
 
-So the pages link to `styles.css?v=12` and `nav.js?v=12`. **When you change either
-file, bump that number in all twelve pages** — here 12 becomes 13:
+So the pages link to `styles.css?v=13` and `nav.js?v=13`. **When you change either
+file, bump that number in all twelve pages** — here 13 becomes 14:
 
 ```sh
-sed -i '' 's/?v=12/?v=13/g' *.html   # macOS
-sed -i    's/?v=12/?v=13/g' *.html   # Linux
+sed -i '' 's/?v=13/?v=14/g' *.html   # macOS
+sed -i    's/?v=13/?v=14/g' *.html   # Linux
 ```
 
 (And so on next time. All that matters is using a number the browser has not
@@ -350,8 +370,9 @@ while they are outstanding, but they are placeholder text a visitor would notice
 **Worth checking:**
 
 - Day, time and room for the weekly discussion (`events.html`)
-- The week-by-week program outline against this semester's curriculum (`programs.html`)
-- The year the rebuilding phase started (`about-eaa.html`)
+- The start date, weekly time and length of the current cohort (`programs.html`)
+- The year the rebuilding phase started — needed before the hidden "How we got
+  here" timeline can go live (`about-eaa.html`)
 - Venue accessibility details (`events.html`)
 - The community health contact — a general inbox is a real barrier for sensitive
   reports, so a named person or dedicated address is better (`community-health.html`)
