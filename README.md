@@ -36,7 +36,7 @@ correcting, not the site — worth fixing before the next cohort receives it.
 | `collaborations.html` | Who we work with |
 | `community-health.html` | Code of conduct and how to raise a problem |
 | `events.html` | Events, with the Luma calendar |
-| `programs.html` | Introductory EA Fellowship — the essentials, the dates and the sign-up |
+| `programs.html` | Introductory EA Fellowship — the essentials and the sign-up |
 | `contact.html` | How to reach us, and the WhatsApp invite |
 | `donate.html` | Giving to EAA, and giving well generally |
 | `styles.css` | All styling for every page |
@@ -209,22 +209,24 @@ form:
 https://airtable.com/appRIUBhz7R0VKN4G/shrLYu2rlYCLolmFY
 ```
 
-The course is **run by Effective Altruism Netherlands**; we run a local cohort of
-it. The page says so and links to them — worth keeping accurate if that changes.
+**We run the fellowship ourselves.** An earlier version of the page said EA
+Netherlands ran it and linked to them; that was wrong and has been corrected. If
+the curriculum has a source worth crediting, credit that instead — but do not
+attribute the running of it to another organisation.
 
 **Length:** six weeks — five of material (Week 1–5), then a social with nothing
-to prepare. Three places say so: the essentials list and the closing band on
-`programs.html`, and the at-a-glance box on `index.html`. Keep them in step.
+to prepare. Two places say so: the essentials list on `programs.html`, and the
+at-a-glance box on `index.html`. Keep them in step.
 
 **Three places carry the cohort's dates**, and they need updating together each
 semester:
 
 1. `programs.html` — the "The essentials" list (*Next cohort starts* / *When*)
-2. `programs.html` — the "Applications are open" card in the Dates section
+2. `programs.html` — the "Applications are open" card
 3. `index.html` — the "At a glance" list on the home page
 
 Individual session dates are deliberately not listed anywhere: those go on the
-Luma calendar, which is embedded on all three pages.
+Luma calendar, which is embedded on the home and events pages.
 
 **When a cohort has started and the next is not open yet**, swap the sign-up
 button in the "Applications are open" card back to the mailto — the replacement
@@ -304,23 +306,15 @@ in two places.
 
 ### Program sessions on the calendar
 
-The same calendar is embedded on `programs.html`, so program sessions show up
-there automatically once you add them on Luma. The point is that someone finding
-you in week three can see a cohort is running even though they cannot join it —
-and knows to ask about the next one.
+`programs.html` used to embed the same calendar, and no longer does: the programs
+page is about the program, and the calendar was pulling every unrelated event
+onto it. Program sessions still belong on Luma — they just show up on the home
+and events pages with everything else.
 
-Two ways to run it:
-
-- **One calendar** (what it does now). Add each session as an event with a clear
-  title — `Intro Fellowship · Week 3` makes the sequence obvious. For sessions
-  closed to newcomers, turn registration off or set the event to invite-only on
-  Luma, so people see it without being able to sign up by mistake.
-- **A separate programs calendar.** Make a second calendar on Luma and swap its
-  id into the `src` on `programs.html`. Cleaner separation, two calendars to keep
-  up to date.
-
-Start with one. Split it only if the events calendar gets so busy that program
-sessions are hard to pick out.
+If you put sessions on Luma, give each a clear title — `Intro Fellowship · Week 3`
+makes the sequence obvious. For sessions closed to newcomers, turn registration
+off or set the event to invite-only, so people can see a cohort is running
+without signing up for one they cannot join.
 
 ## The WhatsApp invite
 
