@@ -9,7 +9,12 @@
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <meta name="robots" content="noindex">
   <meta name="color-scheme" content="only light">
-  <link rel="stylesheet" href="styles.css?v=13">
+  <!-- Both faces are needed for first paint. Preloading them ahead of the
+       stylesheet lets the browser start the fetches without waiting to discover
+       them inside the CSS. The italic face is deliberately not preloaded. -->
+  <link rel="preload" href="fonts/bricolage-grotesque-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/literata-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=14">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -66,11 +71,11 @@
       <div class="prose">
         <div class="notice" role="note">
           <p>
-            <strong>Coming soon.</strong> We have not finished setting up a way to receive donations, so there is nothing here to click yet. In the meantime, if you want your money to do as much good as possible, give it to a <a href="https://www.givewell.org/" rel="noopener" target="_blank">top-rated charity</a> rather than to us &mdash; that is what we would tell you anyway.
+            <strong>Coming soon.</strong> We haven't finished setting up a way to receive donations, so there's nothing here to click yet. In the meantime, if you want your money to do as much good as possible, give it to a <a href="https://www.givewell.org/" rel="noopener" target="_blank">top-rated charity</a> rather than to us &mdash; that's what we'd tell you anyway.
           </p>
         </div>
         <p>
-          In the meantime, the rest of the site is up to date &mdash; and if there is
+          The rest of the site is up to date, and if there's
           something you wanted to find here, just ask.
         </p>
         <div class="button-row">

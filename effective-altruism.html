@@ -8,7 +8,12 @@
   <link rel="icon" href="img/favicon-96.png" sizes="96x96">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <meta name="color-scheme" content="only light">
-  <link rel="stylesheet" href="styles.css?v=13">
+  <!-- Both faces are needed for first paint. Preloading them ahead of the
+       stylesheet lets the browser start the fetches without waiting to discover
+       them inside the CSS. The italic face is deliberately not preloaded. -->
+  <link rel="preload" href="fonts/bricolage-grotesque-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/literata-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=14">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -55,7 +60,7 @@
       <div class="section-head">
         <h2>Where to read more</h2>
         <p>
-          The people who explain this best are not us. Everything below is written
+          The people who explain this best aren't us. Everything below is written
           by organisations who work on it full time.
         </p>
       </div>
@@ -67,15 +72,15 @@
         <a class="card card-link" href="https://www.effectivealtruism.org/" rel="noopener" target="_blank">
           <h3>effectivealtruism.org <span class="arrow" aria-hidden="true"></span></h3>
           <p class="text-muted">
-            The general introduction &mdash; what the idea is, where it came from,
-            and what people do with it.
+            The general introduction: what the idea is, where it came from, and
+            what people do with it.
           </p>
         </a>
         <a class="card card-link" href="https://80000hours.org/" rel="noopener" target="_blank">
           <h3>80,000 Hours <span class="arrow" aria-hidden="true"></span></h3>
           <p class="text-muted">
             Free research and advice on choosing a career that does a lot of good.
-            The most useful thing here if you are deciding what to do with your
+            The most useful thing here if you're deciding what to do with your
             working life.
           </p>
         </a>
@@ -89,7 +94,7 @@
         <a class="card card-link" href="https://www.givingwhatwecan.org/" rel="noopener" target="_blank">
           <h3>Giving What We Can <span class="arrow" aria-hidden="true"></span></h3>
           <p class="text-muted">
-            Another evaluator, working out where donations go furthest &mdash; and
+            Another evaluator, working out where donations go furthest, and
             home of the pledge to give a percentage of your income to the
             organisations that use it best.
           </p>
@@ -113,7 +118,7 @@
 
       <div class="callout" style="margin-top: 2rem;">
         <p>
-          <strong>Would rather talk it through than read?</strong> That is most of
+          <strong>Would rather talk it through than read?</strong> That's most of
           what we do. Our <a href="programs.html">introductory fellowship</a> works
           through these ideas with a facilitator over six weeks, and
           <a href="events.html">our events</a> are open to anyone curious.

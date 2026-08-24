@@ -8,6 +8,47 @@
    Sections: tokens, base, header/nav, layout, components, pages, footer
    ========================================================================= */
 
+/* ---------- Typefaces ----------
+   Self-hosted, not CDN-loaded: a Google Fonts request would send every visitor's
+   IP to a third party, which for an EU organisation is a GDPR exposure and not
+   one a community site needs to take on. Of twenty EA sites surveyed, nineteen
+   self-host for the same reason.
+
+   Both files are variable fonts clamped to the weights this site actually sets.
+   Bricolage across its full opsz/wdth/wght space is 131 KB; at the one weight we
+   use it is 22 KB, rendering identically. Total shipped type: 81 KB, less than
+   the hero image.
+
+   Nothing here goes above 600. Any rule asking for 700 would get a synthesised
+   bold, so `strong` and the old 700 weights were moved down to 600 to match. */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/bricolage-grotesque-var-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Literata";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("fonts/literata-var-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* No page currently sets <em> or <i>, so this face is never fetched. It is
+   committed anyway: an italic-less serif would quietly force a synthesised
+   oblique the first time anyone writes emphasis into the copy. */
+@font-face {
+  font-family: "Literata";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/literata-italic-var-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ---------- Design tokens ---------- */
 :root {
   /* This site is light-only. "only light" also asks browsers not to apply their
@@ -15,33 +56,61 @@
      similar), which would otherwise recolour the page behind our backs. */
   color-scheme: only light;
 
-  /* Brand */
-  --sky: #6fc5e8;          /* wordmark blue */
-  --sky-light: #a8dcf1;
-  --teal: #0a7180;         /* accent: links, buttons — 5.7:1 on white */
-  --teal-strong: #065f6c;  /* hover — 7.3:1 on white */
-  --deep: #04454f;         /* footer and CTA band — 10.7:1 with white */
+  /* Brand — teal only.
+     The palette used to be nine tokens on one hue: every neutral was a tinted
+     blue, so the page had no colour so much as a single lightness ramp, and the
+     teal had nothing to stand out against. Here the neutrals are genuinely
+     neutral and teal is spent only on things you can act on — links, buttons,
+     the figures in a stat. If teal appears somewhere you cannot click and that
+     is not a headline number, that is a bug.
 
-  /* Neutrals */
+     These are the true logo colours rather than the desaturated approximations
+     the old file used (--teal was #0a7180 against the logo's actual #008098);
+     the saturation had been pulled down by eye to reach contrast targets that
+     the real colours turn out to meet anyway. */
+  --teal: #00707f;         /* links, buttons — 5.79:1 on white */
+  --teal-strong: #005866;  /* hover on light — 8.12:1 on white */
+  --teal-lift: #008098;    /* hover on dark; the exact logo teal, 4.62:1 white */
+  --deep: #22272b;         /* footer and CTA band — 15.07:1 with white */
+
+  /* Neutrals — warm graphite, no hue borrowed from the brand */
   --bg: #ffffff;
-  --surface: #f2f9fc;
-  --surface-2: #e3f2f8;
-  --accent-soft: #dff1f8;
-  --text: #12323a;         /* 13.6:1 on white */
-  --muted: #4a6570;        /* 6.2:1 on white */
-  --border: #d5e5ec;
+  --surface: #f3f3f1;
+  --surface-2: #e8e8e4;
+  --tint: #eceae6;         /* soft fills: chips, pills, hover states */
+  --text: #1b2024;         /* 16.42:1 on white, 14.78:1 on --surface */
+  --muted: #5b6369;        /* 6.12:1 on white, 5.50:1 on --surface */
+  --border: #dcdcd7;
+
+  /* Text on the --deep band. Named rather than hardcoded, which is how the old
+     file ended up with five different blues scattered through the footer. */
+  --deep-text: #dcdfe1;    /* 11.26:1 on --deep */
+  --deep-muted: #a8aeb2;   /* 6.72:1 on --deep */
 
   /* Warning / placeholder — deliberately outside the brand palette so a notice
      never reads as ordinary content. */
   --warn-bg: #fdf3e3;
   --warn-border: #e0a94b;
   --warn-text: #6b4708;
-  --shadow: 0 1px 2px rgba(4, 69, 79, 0.05), 0 8px 24px rgba(4, 69, 79, 0.07);
+  --shadow: 0 1px 2px rgba(27, 32, 36, 0.05), 0 8px 24px rgba(27, 32, 36, 0.07);
+
+  /* Display is used at h1/h2 only — see the heading rules for why. Georgia is
+     the fallback rather than a generic serif because its metrics are closest to
+     Literata's, so a swap moves the layout least. */
+  --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --font-body: Literata, Georgia, "Times New Roman", serif;
 
   --container: 68rem;
   --prose: 42rem;
-  --radius: 0.75rem;
-  --radius-sm: 0.5rem;
+
+  /* One radius, and it means something: this is the amount of rounding a thing
+     gets because you press it. Containers get none. The old file had --radius
+     and --radius-sm applied indiscriminately to cards, buttons, embeds, chips,
+     dropdowns, notices and the nav toggle, so every component on the page was a
+     variation on one soft rectangle. Round corners on a card are decoration;
+     round corners on a button are an affordance. Circles below (avatars, step
+     numbers) and the pill are shapes in their own right, not this token. */
+  --radius-control: 3px;
 }
 
 /* Forced-colours mode (Windows High Contrast, and Firefox's colour override in
@@ -95,29 +164,74 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: 1rem;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-body);
+  /* A serif needs a little more size than the sans this replaced to read the
+     same; Literata's large x-height then lets the leading come back down. */
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+/* Bricolage's irregular, slightly-wrong letterforms are the point of this
+   typeface, and they only read as deliberate at display sizes. Below roughly
+   1.5rem they read as a rendering fault, so h3/h4 stay in the body serif at its
+   heaviest shipped weight and take their hierarchy from size and colour. */
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.12;
+}
+
+h3,
+h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  line-height: 1.2;
-  letter-spacing: -0.02em;
   margin: 0 0 0.6em;
 }
 
+/* Negative tracking is an optical correction for large type, so it is applied
+   at the one size large enough to need it rather than to every heading. */
 h1 {
-  font-size: clamp(2rem, 5vw, 2.9rem);
+  font-size: 2.05rem;
+  letter-spacing: -0.015em;
 }
 h2 {
-  font-size: clamp(1.5rem, 3.2vw, 2rem);
+  font-size: 1.5rem;
 }
 h3 {
   font-size: 1.15rem;
+}
+
+/* Two breakpoints, not fluid type. Every size on this site used to be a clamp(),
+   which reads as machine-generated precisely because it is the answer that needs
+   no decisions. These are the two widths where the layout actually changes. */
+@media (min-width: 46rem) {
+  h1 {
+    font-size: 2.6rem;
+  }
+  h2 {
+    font-size: 1.85rem;
+  }
+}
+
+@media (min-width: 68rem) {
+  h1 {
+    font-size: 2.9rem;
+  }
+}
+
+/* The shipped Literata stops at 600; the browser default of 700 for strong/b
+   would be synthesised, which on a serif smears the stems. */
+strong,
+b {
+  font-weight: 600;
 }
 
 p {
@@ -174,12 +288,12 @@ hr {
 }
 
 .section {
-  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  padding-block: 2.75rem;
 }
 
 .section-alt {
   background: var(--surface);
-  border-block: 1px solid var(--border);
+  border-top: 1px solid var(--border);
 }
 
 .section-head {
@@ -195,10 +309,10 @@ hr {
 .eyebrow {
   display: block;
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--muted);
   margin-bottom: 0.5rem;
 }
 
@@ -216,7 +330,7 @@ hr {
 }
 
 .lead {
-  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+  font-size: 1.15rem;
   color: var(--muted);
 }
 
@@ -224,33 +338,53 @@ hr {
   color: var(--muted);
 }
 
-.grid {
-  display: grid;
-  gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-}
-
-.grid-2 {
-  display: grid;
-  gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-}
-
-/* For rows of exactly four items: 4 across on desktop, 2 on tablet, so the
-   last card never sits alone on its own row. */
+/* Column counts, not repeat(auto-fit, minmax(...)) three times over. auto-fit
+   is the correct general answer, which is exactly why it is the predicted one —
+   and it also means nobody ever decided how many columns these should be. They
+   hold 6, 6 and 3 items (.grid), 2, 2, 2 and 3 (.grid-2) and 4 and 4 (.grid-4),
+   so the counts below are chosen against the content that exists rather than
+   left to whatever the viewport happens to allow. */
+.grid,
+.grid-2,
 .grid-4 {
   display: grid;
   gap: 1.25rem;
-  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  grid-template-columns: 1fr;
+}
+
+/* Four items: two up on narrow screens so the last never sits alone. */
+.grid-4 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 46rem) {
+  .grid,
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 62rem) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* ---------- Header & navigation ---------- */
+/* Sticky is kept — it is useful on a site with a dropdown nav. The blurred
+   translucent panel is not: it is the default treatment for a sticky header, it
+   costs a compositing layer on every scroll frame, and it degrades to a
+   half-transparent bar wherever backdrop-filter is unsupported. A solid bar with
+   a hairline under it does the same job and reads as a decision. */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
 
@@ -270,7 +404,7 @@ hr {
   gap: 0.6rem;
   color: var(--text);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* The lightbulb mark. mix-blend-mode hides its baked-in white background
@@ -285,7 +419,6 @@ hr {
 
 .brand-text {
   font-size: 0.98rem;
-  letter-spacing: -0.01em;
   line-height: 1.2;
   max-width: 11rem;
 }
@@ -303,7 +436,7 @@ hr {
   gap: 0.4rem;
   background: none;
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-control);
   color: var(--text);
   font: inherit;
   font-size: 0.9rem;
@@ -323,7 +456,7 @@ hr {
 .nav-link {
   display: inline-block;
   padding: 0.5rem 0.7rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-control);
   color: var(--muted);
   font-size: 0.95rem;
   text-decoration: none;
@@ -381,7 +514,6 @@ hr {
   padding: 0.4rem;
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
   box-shadow: var(--shadow);
   opacity: 0;
   visibility: hidden;
@@ -401,7 +533,7 @@ hr {
 .dropdown a {
   display: block;
   padding: 0.5rem 0.7rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-control);
   color: var(--text);
   font-size: 0.93rem;
   text-decoration: none;
@@ -409,7 +541,7 @@ hr {
 
 .dropdown a:hover,
 .dropdown a:focus-visible {
-  background: var(--accent-soft);
+  background: var(--tint);
   color: var(--teal-strong);
 }
 
@@ -487,7 +619,7 @@ hr {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.7rem 1.35rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-control);
   font-weight: 600;
   font-size: 0.98rem;
   font-family: inherit;
@@ -514,7 +646,7 @@ hr {
 
 .button-secondary:hover {
   background: #fff;
-  border-color: var(--sky);
+  border-color: var(--teal);
   color: var(--text);
 }
 
@@ -526,12 +658,15 @@ hr {
 }
 
 /* ---------- Cards ---------- */
+/* A border and a two-layer shadow do the same job — separate this box from the
+   page — so doing both is saying it twice. The border stays because it works in
+   forced-colours mode and at any zoom; the shadow goes. Shadow is now reserved
+   for things that genuinely float above the page, which is the dropdown and the
+   mobile nav panel and nothing else. */
 .card {
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
   padding: 1.5rem;
-  box-shadow: var(--shadow);
 }
 
 .card h3 {
@@ -549,21 +684,8 @@ hr {
 }
 
 .card-link:hover {
-  border-color: var(--sky);
+  border-color: var(--teal);
   color: inherit;
-}
-
-.card-icon {
-  display: inline-grid;
-  place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: var(--radius-sm);
-  background: var(--accent-soft);
-  color: var(--teal);
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 0.9rem;
 }
 
 .card-meta {
@@ -578,48 +700,36 @@ hr {
 }
 
 /* ---------- Hero ---------- */
+/* Everything the hero has regardless of treatment. The map, the wash and the
+   text colour depend on which treatment is active and live in the generated
+   block at the foot of this file — see tools/set_hero.py. */
 .hero {
   position: relative;
   border-bottom: 1px solid var(--border);
   background-color: var(--surface-2);
-  background-image: linear-gradient(
-      100deg,
-      rgba(255, 255, 255, 0.96) 0%,
-      rgba(255, 255, 255, 0.88) 42%,
-      rgba(255, 255, 255, 0.55) 70%,
-      rgba(255, 255, 255, 0.35) 100%
-    ),
-    url("img/hero-amsterdam.webp");
   background-size: cover;
   background-position: center;
-}
-
-@media (max-width: 52rem) {
-  /* On narrow screens the text spans the full width, so lift the whole wash. */
-  .hero {
-    background-image: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.94) 0%,
-        rgba(255, 255, 255, 0.86) 60%,
-        rgba(255, 255, 255, 0.7) 100%
-      ),
-      url("img/hero-amsterdam.webp");
-  }
+  color: var(--hero-ink);
 }
 
 .hero-inner {
   max-width: var(--container);
   margin: 0 auto;
-  padding: clamp(3rem, 8vw, 5.5rem) 1.25rem;
+  padding: 3rem 1.25rem;
 }
 
 .hero h1 {
   max-width: 18ch;
 }
 
+.hero .eyebrow {
+  color: inherit;
+  opacity: 0.75;
+}
+
 .hero .lead {
   max-width: 46ch;
-  color: #2c4c56;
+  color: inherit;
 }
 
 .hero p {
@@ -629,11 +739,11 @@ hr {
 .hero-note {
   margin-top: 1.5rem;
   font-size: 0.95rem;
-  color: var(--muted);
-  background: rgba(255, 255, 255, 0.7);
+  color: var(--hero-ink);
+  background: var(--hero-note-bg);
   display: inline-block;
   padding: 0.5rem 0.9rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-control);
 }
 
 /* ---------- Page header (interior pages) ---------- */
@@ -643,7 +753,7 @@ hr {
 }
 
 .page-header .container {
-  padding-block: clamp(2rem, 5vw, 3.25rem);
+  padding-block: 2.25rem;
 }
 
 .page-header h1 {
@@ -674,9 +784,10 @@ hr {
 
 .stat-number {
   display: block;
-  font-size: clamp(1.9rem, 4vw, 2.4rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--teal);
   line-height: 1.1;
 }
@@ -697,10 +808,20 @@ hr {
 /* ---------- Embeds ---------- */
 .embed {
   border: 1px solid var(--border);
-  border-radius: var(--radius);
   overflow: hidden;
   background: var(--bg);
-  box-shadow: var(--shadow);
+}
+
+/* The Luma calendar is a cross-origin iframe carrying its own
+   prefers-color-scheme rules, so on a machine set to dark mode it renders dark
+   inside an otherwise light page. The :root declaration cannot reach it —
+   color-scheme does not cross a frame boundary — but declaring it on the frame
+   itself is the mechanism intended for pushing a scheme into an embedded
+   document. Unverified: confirm by opening the site with the OS in dark mode.
+   If Luma still renders dark, ask them whether the embed takes a theme
+   parameter, because nothing on our side can override it. */
+.embed iframe {
+  color-scheme: light;
 }
 
 /* Luma sizes its own iframe content; we force it to fill the width and give it
@@ -731,10 +852,10 @@ hr {
   object-fit: cover;
   display: grid;
   place-items: center;
-  background: var(--accent-soft);
-  color: var(--teal);
+  background: var(--tint);
+  color: var(--muted);
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .person h3 {
@@ -742,7 +863,7 @@ hr {
 }
 
 .person .role {
-  color: var(--teal);
+  color: var(--muted);
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 0.6rem;
@@ -760,12 +881,12 @@ hr {
   width: 4rem;
   height: 4rem;
   margin-bottom: 1rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-control);
   object-fit: contain;
-  background: var(--accent-soft);
-  color: var(--teal);
+  background: var(--tint);
+  color: var(--muted);
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.02em;
   padding: 0.25rem;
   text-align: center;
@@ -775,7 +896,6 @@ hr {
 .notice {
   border: 2px solid var(--warn-border);
   background: var(--warn-bg);
-  border-radius: var(--radius);
   padding: 1.1rem 1.25rem;
   margin-bottom: 2rem;
 }
@@ -817,9 +937,7 @@ hr {
   margin: 0;
   background: var(--bg);
   border: 1px dashed var(--border);
-  border-radius: var(--radius);
   padding: 1.25rem;
-  box-shadow: var(--shadow);
 }
 
 .chart figcaption h3 {
@@ -888,7 +1006,6 @@ hr {
 .chart-value strong {
   font-size: 1.25rem;
   color: var(--text);
-  letter-spacing: -0.02em;
 }
 
 /* ---------- Data table ---------- */
@@ -933,11 +1050,12 @@ hr {
 }
 
 .statement-text {
-  font-size: clamp(1.5rem, 4vw, 2.25rem);
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
-  color: var(--teal-strong);
+  font-size: 1.55rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--text);
   margin: 0;
 }
 
@@ -955,17 +1073,20 @@ hr {
   display: inline-block;
   padding: 0.3rem 0.8rem;
   border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--teal-strong);
+  background: var(--tint);
+  color: var(--text);
   font-size: 0.85rem;
   font-weight: 600;
 }
 
+/* The coloured left border with the radius squared off on that edge is the
+   single most-cited tell of generated UI, and a tinted panel is the next one
+   along. This is neither: a rule above the block and space below it, the way an
+   aside is set in print. It carries no colour at all, so it cannot compete with
+   the teal that now means "you can act on this". */
 .callout {
-  border-left: 3px solid var(--sky);
-  background: var(--surface);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  padding: 1.1rem 1.25rem;
+  border-top: 2px solid var(--text);
+  padding: 1rem 0 0;
   margin: 1.75rem 0;
 }
 
@@ -997,9 +1118,9 @@ hr {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--teal);
+  background: var(--text);
   color: #fff;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.9rem;
 }
 
@@ -1025,7 +1146,7 @@ hr {
 }
 
 .cta-band .container {
-  padding-block: clamp(2.25rem, 5vw, 3.5rem);
+  padding-block: 2.5rem;
   text-align: center;
 }
 
@@ -1034,19 +1155,19 @@ hr {
 }
 
 .cta-band p {
-  color: #cbe6ee;
+  color: var(--deep-muted);
   max-width: 40rem;
   margin-inline: auto;
 }
 
 .cta-band .button {
-  background: var(--sky);
-  color: #06333b;
+  background: var(--teal);
+  color: #fff;
 }
 
 .cta-band .button:hover {
-  background: var(--sky-light);
-  color: #06333b;
+  background: var(--teal-lift);
+  color: #fff;
 }
 
 .cta-band .button-row {
@@ -1083,18 +1204,33 @@ hr {
 /* ---------- Footer ---------- */
 .site-footer {
   background: var(--deep);
-  color: #dceef3;
+  color: var(--deep-text);
 }
 
 .site-footer a {
-  color: #dceef3;
+  color: var(--deep-text);
 }
 
+/* A logo column and three link columns — a fixed structure, so it is stated
+   rather than inferred. The logo column is given more room than the link
+   columns instead of all four sharing the width equally. */
 .footer-grid {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  grid-template-columns: 1fr;
   padding-block: 3rem 2rem;
+}
+
+@media (min-width: 40rem) {
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 62rem) {
+  .footer-grid {
+    grid-template-columns: 1.4fr repeat(3, 1fr);
+  }
 }
 
 .footer-logo {
@@ -1108,7 +1244,7 @@ hr {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--sky);
+  color: var(--deep-text);
   margin-bottom: 0.9rem;
 }
 
@@ -1133,7 +1269,7 @@ hr {
 }
 
 .footer-about p {
-  color: #b6d7e0;
+  color: var(--deep-muted);
   font-size: 0.95rem;
   max-width: 24rem;
 }
@@ -1147,9 +1283,122 @@ hr {
   justify-content: space-between;
   align-items: center;
   font-size: 0.88rem;
-  color: #a8ccd6;
+  color: var(--deep-muted);
 }
 
 .footer-bottom p {
   margin: 0;
+}
+
+/* ---------- Scale at wider viewports ----------
+   The sizes above are the small-screen values. These are the same handful of
+   things the old stylesheet scaled fluidly with clamp(); they now step once, at
+   the width where the layout stops being a single narrow column. Kept together
+   at the end of the file so each one wins over its base rule without needing to
+   out-specify it. */
+@media (min-width: 46rem) {
+  .section {
+    padding-block: 4.25rem;
+  }
+
+  .hero-inner {
+    padding: 5rem 1.25rem;
+  }
+
+  .page-header .container {
+    padding-block: 3rem;
+  }
+
+  .cta-band .container {
+    padding-block: 3.25rem;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+  }
+
+  .stat-number {
+    font-size: 2.35rem;
+  }
+
+  .statement-text {
+    font-size: 2.1rem;
+  }
+}
+
+
+/* ---------- Hero treatment ----------
+   Generated by tools/set_hero.py — do not hand-edit; run
+   `PYTHONPATH=./.pylibs python3 tools/set_hero.py <b|c|f>` instead, which
+   re-renders img/hero-amsterdam.webp to match and re-solves both washes against
+   the new pixels. The three treatments are the shortlist from
+   build/03-hero-variants.html; switching between them is this block plus the
+   image, and touches no markup. */
+/* >>> HERO */
+/* Treatment C — Defocused under the text.
+   Map defocused where the text sits and sharp where it does not, so the
+   noise behind the glyphs goes without softening the part of the map
+   anyone looks at. Removing the darkest specks means this needs a lighter
+   wash than B, and the right-hand map stays uncovered.
+   Washes solved against the real pixels: worst case 7.04:1 desktop,
+   7.11:1 mobile, against a 4.5:1 AA floor. */
+:root {
+  --hero-ink: var(--text);
+  --hero-note-bg: rgba(255, 255, 255, 0.88);
+}
+
+.hero {
+  background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.6) 0%,
+      rgba(255, 255, 255, 0.34) 55%,
+      rgba(255, 255, 255, 0.08) 100%
+    ),
+    url("img/hero-amsterdam.webp");
+}
+
+@media (max-width: 52rem) {
+  /* Narrow screens put the text across the full width, so the wash has to
+     cover the whole image rather than fading out to one side. */
+  .hero {
+    background-image: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0.56) 55%,
+        rgba(255, 255, 255, 0.52) 100%
+      ),
+      url("img/hero-amsterdam.webp");
+  }
+}
+/* <<< HERO */
+
+
+/* ---------- Section rhythm ----------
+   The homepage was five bands of identical width, identical padding, and a
+   perfect white / tinted / white / tinted / dark alternation. Nothing was wrong
+   with any one of them; the problem was that knowing one told you all five.
+
+   This breaks that without touching a word of the copy, and hangs off a named
+   class rather than :nth-child, so sections can be reordered without silently
+   changing which one is which — and so the other ten pages sharing this
+   stylesheet are unaffected.
+
+   An earlier version also ran this section wider than the 68rem measure
+   everything else holds to, to give the page something that broke the grid. One
+   wider band on its own just read as a mistake, so the width went back and only
+   the spacing stayed. Breaking the tint alternation turned out to be the part
+   that mattered. */
+
+/* This section leads the page body and carries the calendar, so it gets more
+   air than those below it. Being untinted, it also needs its own edge against
+   the untinted section that follows. */
+.section-lead {
+  border-bottom: 1px solid var(--border);
+  padding-block: 3.25rem;
+}
+
+@media (min-width: 46rem) {
+  .section-lead {
+    padding-block: 5.25rem;
+  }
 }

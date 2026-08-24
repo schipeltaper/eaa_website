@@ -9,7 +9,12 @@
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <meta name="robots" content="noindex">
   <meta name="color-scheme" content="only light">
-  <link rel="stylesheet" href="styles.css?v=13">
+  <!-- Both faces are needed for first paint. Preloading them ahead of the
+       stylesheet lets the browser start the fetches without waiting to discover
+       them inside the CSS. The italic face is deliberately not preloaded. -->
+  <link rel="preload" href="fonts/bricolage-grotesque-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/literata-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=14">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -66,11 +71,11 @@
       <div class="prose">
         <div class="notice" role="note">
           <p>
-            <strong>Coming soon.</strong> The page is built, but the numbers on it are not real yet. We would rather publish nothing than publish figures we have not actually measured, so it stays here until the counts are in.
+            <strong>Coming soon.</strong> The page is built, but the numbers on it aren't real yet. We'd rather publish nothing than publish figures we haven't actually measured, so it stays here until the counts are in.
           </p>
         </div>
         <p>
-          In the meantime, the rest of the site is up to date &mdash; and if there is
+          In the meantime, the rest of the site is up to date, and if there's
           something you wanted to find here, just ask.
         </p>
         <div class="button-row">

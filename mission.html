@@ -8,7 +8,12 @@
   <link rel="icon" href="img/favicon-96.png" sizes="96x96">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <meta name="color-scheme" content="only light">
-  <link rel="stylesheet" href="styles.css?v=13">
+  <!-- Both faces are needed for first paint. Preloading them ahead of the
+       stylesheet lets the browser start the fetches without waiting to discover
+       them inside the CSS. The italic face is deliberately not preloaded. -->
+  <link rel="preload" href="fonts/bricolage-grotesque-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/literata-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=14">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -44,7 +49,7 @@
     <div class="container">
       <h1>Our mission</h1>
       <p>
-        What we are here to do, the values we hold ourselves to, and where we are
+        What we're here to do, the values we hold ourselves to, and where we're
         trying to get to.
       </p>
     </div>
@@ -54,7 +59,6 @@
   <section class="section">
     <div class="container">
       <div class="statement">
-        <span class="eyebrow">Our core purpose</span>
         <!-- The headline is revisited at each semester reflection meeting. When it
              changes, update it here. -->
         <p class="statement-text">Our core purpose is to improve overall well-being.</p>
@@ -66,26 +70,22 @@
   <section class="section section-alt">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">What we stand for</span>
         <h2>The core values of our community</h2>
       </div>
       <div class="grid">
         <div class="card">
-          <span class="card-icon" aria-hidden="true">🌱</span>
           <h3>Development</h3>
           <p class="text-muted">
-            Create the space for people to develop in meaningful ways.
+            Creating the space for people to develop in meaningful ways.
           </p>
         </div>
         <div class="card">
-          <span class="card-icon" aria-hidden="true">🤝</span>
           <h3>Care &amp; support</h3>
           <p class="text-muted">
             Caring for and supporting the people of our community however we can.
           </p>
         </div>
         <div class="card">
-          <span class="card-icon" aria-hidden="true">🔬</span>
           <h3>Scientific mindset</h3>
           <p class="text-muted">
             Using experiments, reason and evidence to best fulfil our purpose.
@@ -101,8 +101,7 @@
       <!-- Single column since the "In plainer terms" card next to it was cut: a
            lone card in a grid-2 sits at half width and looks like a mistake. -->
       <div class="prose">
-        <span class="eyebrow">Our outcome vision</span>
-        <h2>Where we are trying to get to</h2>
+        <h2>Where we're trying to get to</h2>
         <p class="lead">
           EA Amsterdam is a well-known breeding ground where anyone driven to
           make an effective positive impact can find community, connections,

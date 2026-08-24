@@ -12,7 +12,12 @@
   <link rel="icon" href="img/favicon-96.png" sizes="96x96">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <meta name="color-scheme" content="only light">
-  <link rel="stylesheet" href="styles.css?v=13">
+  <!-- Both faces are needed for first paint. Preloading them ahead of the
+       stylesheet lets the browser start the fetches without waiting to discover
+       them inside the CSS. The italic face is deliberately not preloaded. -->
+  <link rel="preload" href="fonts/bricolage-grotesque-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/literata-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=14">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -55,28 +60,26 @@
         benefit others as much as possible — and then acting on it.
       </p>
       <p>
-        We are the Amsterdam community built around that idea: people who want
+        We're the Amsterdam community built around that idea: people who want
         their work, donations and time to count for as much as they can. We meet
-        to think hard about the world's most pressing problems, to disagree well,
-        and to help each other turn good intentions into real impact.
+        to think hard about the world's most pressing problems, and to disagree
+        well about them.
       </p>
       <div class="button-row">
         <a class="button" href="events.html">Join our events</a>
         <a class="button-secondary" href="programs.html">New to EA? Start here</a>
       </div>
       <p class="hero-note">
-        We have a <strong>student branch</strong> and a
-        <strong>non-student branch</strong> — whichever you are, you are welcome
-        here. Most of our events and programs are for everyone.
+        We have a student branch and a non-student branch. Most of our events
+        and programs are open to both.
       </p>
     </div>
   </section>
 
   <!-- ============ Events / Luma embed ============ -->
-  <section class="section section-alt" id="events">
+  <section class="section section-lead" id="events">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">What's coming up</span>
         <h2>Join our events</h2>
         <p>
           Discussions, socials, speaker talks and workshops. Most events are free,
@@ -94,12 +97,10 @@
             second Tuesday.
           </li>
           <li>
-            For everything else: unless the event says otherwise, you are welcome
-            &mdash; student or not.
+            Everything else is open unless the listing says otherwise.
           </li>
           <li>
-            Our <a href="programs.html">programs</a> are the same. Students and
-            non-students, no background needed.
+            Our <a href="programs.html">programs</a> work the same way.
           </li>
         </ul>
       </div>
@@ -126,18 +127,16 @@
     <div class="container">
       <div class="grid-2">
         <div>
-          <span class="eyebrow">Start here</span>
           <h2>New to EA? Join our intro program</h2>
           <p>
-            Every semester we run the <strong>Introductory EA Fellowship</strong>: a
+            Every semester we run the Introductory EA Fellowship: a
             practical course in doing good more effectively. Each week you read,
             try an exercise, and then work through it together with a facilitator.
           </p>
           <p>
-            It teaches skills, not conclusions — reasoning transparently, comparing
-            interventions, thinking under uncertainty, prioritising between
-            problems. You finish with a plan for your own impact. No prior
-            knowledge needed, and you are not expected to agree with any of it.
+            It's about method: making your reasoning checkable, comparing
+            interventions, and acting sensibly when the evidence is thin. You
+            finish with a plan for your own impact. No background needed.
           </p>
           <div class="button-row">
             <a class="button" href="https://airtable.com/appRIUBhz7R0VKN4G/shrLYu2rlYCLolmFY" rel="noopener" target="_blank">Sign up</a>
@@ -145,7 +144,7 @@
           </div>
         </div>
         <div class="card">
-          <h3>At a glance</h3>
+          <h3>What it involves</h3>
           <dl class="definition-list">
             <dt>Next cohort starts</dt>
             <dd>Thursday 10 September, 17:30&ndash;19:00</dd>
@@ -156,7 +155,7 @@
             <dt>Cost</dt>
             <dd>Free</dd>
             <dt>Who it's for</dt>
-            <dd>Everyone &mdash; students and non-students, no background needed</dd>
+            <dd>Students and non-students</dd>
           </dl>
         </div>
       </div>
@@ -167,7 +166,6 @@
   <section class="section section-alt">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Stay in touch</span>
         <h2>Join our community</h2>
         <p>
           The WhatsApp group is where events get announced and where most of the
@@ -176,28 +174,24 @@
       </div>
       <div class="grid-4">
         <a class="card card-link" href="contact.html#whatsapp">
-          <span class="card-icon" aria-hidden="true">💬</span>
           <h3>WhatsApp community</h3>
           <p class="text-muted">
-            Event announcements, questions and plans. Come and say hello.
+            Event announcements, questions and plans.
           </p>
         </a>
         <a class="card card-link" href="https://www.linkedin.com/company/effective-altruism-amsterdam" rel="me noopener" target="_blank">
-          <span class="card-icon" aria-hidden="true">in</span>
           <h3>LinkedIn</h3>
           <p class="text-muted">
             Talks, opportunities and what the community is working on.
           </p>
         </a>
         <a class="card card-link" href="https://www.instagram.com/eaamsterdam/" rel="me noopener" target="_blank">
-          <span class="card-icon" aria-hidden="true">📷</span>
           <h3>Instagram</h3>
           <p class="text-muted">
             @eaamsterdam — photos from events and what is coming up next.
           </p>
         </a>
         <a class="card card-link" href="mailto:info@eaamsterdam.com">
-          <span class="card-icon" aria-hidden="true">✉️</span>
           <h3>Email us</h3>
           <p class="text-muted">
             info@eaamsterdam.com — good for anything that needs a real answer.
@@ -212,7 +206,7 @@
     <div class="container">
       <h2>Come to one thing and see</h2>
       <p>
-        You do not have to call yourself an effective altruist, or agree with any
+        You don't have to call yourself an effective altruist, or agree with any
         of it. Turning up once is enough.
       </p>
       <div class="button-row">

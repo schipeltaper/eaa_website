@@ -8,7 +8,12 @@
   <link rel="icon" href="img/favicon-96.png" sizes="96x96">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <meta name="color-scheme" content="only light">
-  <link rel="stylesheet" href="styles.css?v=13">
+  <!-- Both faces are needed for first paint. Preloading them ahead of the
+       stylesheet lets the browser start the fetches without waiting to discover
+       them inside the CSS. The italic face is deliberately not preloaded. -->
+  <link rel="preload" href="fonts/bricolage-grotesque-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/literata-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=14">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -50,7 +55,6 @@
     <div class="container">
       <div class="grid-2">
         <div>
-          <span class="eyebrow">Start here</span>
           <h2>The Introductory EA Fellowship</h2>
           <p>
             A practical course in doing good more effectively, run by us here in
@@ -58,12 +62,12 @@
             exercise to work through beforehand.
           </p>
           <p>
-            It teaches skills rather than conclusions: how to make your reasoning
-            visible, how to compare interventions, how to act sensibly when the
-            evidence is thin, and how to work out which problems deserve your
-            effort. <strong>By the end you will have a plan</strong> for increasing
-            your impact &mdash; through your career, your giving, your political voice,
-            and your role in helping others do the same.
+            What it teaches is method: how to make your reasoning visible, how to
+            compare interventions, how to act sensibly when the evidence is thin,
+            and how to work out which problems deserve your effort. By the end
+            you'll have a plan for increasing your impact: through your career,
+            your giving, your political voice, and your role in helping others do
+            the same.
           </p>
           <p>
             The people matter as much as the material. Past participants have gone
@@ -96,10 +100,10 @@
             <dd>90 minutes, with a facilitator</dd>
             <dt>Cost</dt>
             <dd>Free</dd>
-            <dt>Who it is for</dt>
-            <dd>Everyone &mdash; students and non-students alike</dd>
+            <dt>Who it's for</dt>
+            <dd>Students and non-students</dd>
             <dt>Prerequisites</dt>
-            <dd>None at all</dd>
+            <dd>None</dd>
           </dl>
         </div>
       </div>
@@ -115,9 +119,9 @@
         <p>
           <strong>Cohorts start together and stay together.</strong> Each week
           builds on the last, and the group matters as much as the reading, so we
-          do not add people once a cohort is under way.
-          <a href="#next-cohort">Sign up before it starts</a> &mdash; or, if you have
-          found this too late, ask us to tell you when the next one opens.
+          don't add people once a cohort is under way.
+          <a href="#next-cohort">Sign up before it starts</a>. If you've found
+          this too late, ask us to tell you when the next one opens.
         </p>
       </div>
 
@@ -127,7 +131,6 @@
              "Tell me when the next cohort opens":
              <a class="button" href="mailto:info@eaamsterdam.com?subject=Intro%20Fellowship%20-%20tell%20me%20when%20the%20next%20cohort%20opens">Email us</a> -->
         <div class="card" id="next-cohort">
-          <span class="card-icon" aria-hidden="true">&#9998;</span>
           <h3>Applications are open</h3>
           <p class="text-muted">
             The next cohort starts <strong>Thursday 10 September</strong> and runs
@@ -138,16 +141,15 @@
             <a class="button" href="https://airtable.com/appRIUBhz7R0VKN4G/shrLYu2rlYCLolmFY" rel="noopener" target="_blank">Sign up</a>
           </div>
           <p class="reveal-note">
-            Cannot make Thursday evenings, or found this too late? Email
+            Can't make Thursday evenings, or found this too late? Email
             <a href="mailto:info@eaamsterdam.com?subject=Intro%20Fellowship">info@eaamsterdam.com</a>
-            and we will put you on the list for the next one.
+            and we'll put you on the list for the next one.
           </p>
         </div>
         <div class="card">
-          <span class="card-icon" aria-hidden="true">&#128075;</span>
           <h3>In the meantime, come anyway</h3>
           <p class="text-muted">
-            Everything else we run is open to newcomers all year &mdash; socials, talks
+            Everything else we run is open to newcomers all year: socials, talks
             and discussions, no reading required. Most people who join a cohort have
             been to a couple of those first.
           </p>

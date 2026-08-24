@@ -8,7 +8,12 @@
   <link rel="icon" href="img/favicon-96.png" sizes="96x96">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <meta name="color-scheme" content="only light">
-  <link rel="stylesheet" href="styles.css?v=13">
+  <!-- Both faces are needed for first paint. Preloading them ahead of the
+       stylesheet lets the browser start the fetches without waiting to discover
+       them inside the CSS. The italic face is deliberately not preloaded. -->
+  <link rel="preload" href="fonts/bricolage-grotesque-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/literata-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=14">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -54,8 +59,8 @@
       <div class="prose">
         <p>
           We want this to be a place where you can think out loud, be wrong, and
-          disagree without it costing you anything. That does not happen by
-          accident, so it is worth being explicit.
+          disagree without it costing you anything. That doesn't happen by
+          accident, so it's worth being explicit.
         </p>
 
         <h2>Our code of conduct</h2>
@@ -73,7 +78,7 @@
         <h2>If something goes wrong</h2>
         <p>
           If you have been made uncomfortable, or seen something that worries you,
-          please tell us. You do not need proof, and you do not need to be the
+          please tell us. You don't need proof, and you don't need to be the
           person it happened to.
         </p>
         <ul>
@@ -91,7 +96,7 @@
         </ul>
 
         <p class="text-muted">
-          If you are struggling with something bigger than us, your GP is the usual
+          If you're struggling with something bigger than us, your GP is the usual
           route in the Netherlands, and 113 Zelfmoordpreventie is free and available
           around the clock on <a href="tel:0800-0113">0800-0113</a>.
         </p>
