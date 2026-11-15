@@ -214,16 +214,21 @@ Netherlands ran it and linked to them; that was wrong and has been corrected. If
 the curriculum has a source worth crediting, credit that instead — but do not
 attribute the running of it to another organisation.
 
-**Length:** six weeks — five of material (Week 1–5), then a social with nothing
-to prepare. Two places say so: the essentials list on `programs.html`, and the
-at-a-glance box on `index.html`. Keep them in step.
+**Length:** six weeks: five on the material (Week 1–5), then a closing week
+with final presentations and an event to meet the wider community. Each week is
+about 1.5 hours of reading plus a 90-minute in-person discussion.
+
+**How sign-up works:** the Airtable form only records interest. After the
+sign-up deadline we email everyone a separate availability form, and build the
+cohorts (day, time, facilitator) from those answers. So the site gives a start
+week and a deadline, not a weekday and time.
 
 **Three places carry the cohort's dates**, and they need updating together each
 semester:
 
-1. `programs.html` — the "The essentials" list (*Next cohort starts* / *When*)
-2. `programs.html` — the "Applications are open" card
-3. `index.html` — the "At a glance" list on the home page
+1. `programs.html`: the "The essentials" list (*Starts* / *Sign up by*)
+2. `programs.html`: the "How signing up works" steps
+3. `index.html`: the "What it involves" list on the home page
 
 Individual session dates are deliberately not listed anywhere: those go on the
 Luma calendar, which is embedded on the home and events pages.
