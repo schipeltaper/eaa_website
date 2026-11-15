@@ -216,7 +216,7 @@ attribute the running of it to another organisation.
 
 **Length:** six weeks: five on the material (Week 1–5), then a closing week
 with final presentations and an event to meet the wider community. Each week is
-about 1.5 hours of reading plus a 90-minute in-person discussion.
+about 2 hours of preparation plus a 90-minute in-person discussion.
 
 **How sign-up works:** the Airtable form only records interest. After the
 sign-up deadline we email everyone a separate availability form, and build the
